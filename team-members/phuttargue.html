@@ -11,8 +11,8 @@
   <style>
     :root{
       /* พาเลตชมพูพาสเทล */
-      --bg-1:#fff0f6;         /* ชมพูขาว */
-      --bg-2:#ffe4f1;         /* ชมพูอ่อน */
+      --bg-1:#fff0f6;
+      --bg-2:#ffe4f1;
       --pink-50:#ffe6f3;
       --pink-100:#ffd1e6;
       --pink-300:#ffb3d9;
@@ -21,7 +21,7 @@
       --pink-700:#e04692;
       --ink:#3f0d2b;
       --muted:#7b375d;
-      --card:#ffffffcc;       /* glassy card */
+      --card:#ffffffcc;
       --stroke:#ffd9eb;
       --shadow: 0 20px 40px rgba(255, 116, 183, 0.25);
     }
@@ -39,6 +39,7 @@
       display:grid;
       place-items:center;
       padding:40px 16px;
+      overflow:hidden; /* กันซากุระเลื่อน scrollbar */
     }
 
     .shell{ width:min(980px,100%); }
@@ -142,6 +143,19 @@
       .profile{ grid-template-columns:1fr; }
       .avatar-wrap{ margin-top:-90px; }
     }
+
+    /* 🌸 ซากุระร่วง */
+    .sakura{
+      position: fixed;
+      top:-2vh;
+      pointer-events:none;
+      animation: fall linear forwards;
+    }
+    @keyframes fall{
+      to{
+        transform: translateY(105vh) rotate(360deg);
+      }
+    }
   </style>
 </head>
 <body>
@@ -191,6 +205,21 @@
     <footer>© <span id="y"></span> Team B-8 • made with 💗</footer>
   </main>
 
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+  <script>
+    document.getElementById('y').textContent=new Date().getFullYear();
+
+    // 🌸 สร้างกลีบซากุระ
+    function createSakura(){
+      const sakura=document.createElement('div');
+      sakura.classList.add('sakura');
+      sakura.innerText='🌸';
+      sakura.style.left=Math.random()*100+'vw';
+      sakura.style.fontSize=12+Math.random()*20+'px';
+      sakura.style.animationDuration=3+Math.random()*5+'s';
+      document.body.appendChild(sakura);
+      setTimeout(()=>sakura.remove(),8000);
+    }
+    setInterval(createSakura,300);
+  </script>
 </body>
 </html>
