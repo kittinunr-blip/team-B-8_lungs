@@ -10,91 +10,91 @@
 
   <style>
     .name{ letter-spacing:.4px; }
-.subtitle{ color:#a2517f }
+    .subtitle{ color:#a2517f }
 
-/* ป้ายชิปให้ฟูและมีประกาย */
-.chip{
-  background: linear-gradient(180deg,#fff5fb,#ffe4f1);
-  border:1.5px solid #ffd3e7;
-  box-shadow: 0 6px 16px rgba(255,140,180,.16), inset 0 2px 0 #fff;
-}
-.chip:hover{ transform: translateY(-2px) scale(1.02); }
+    /* ป้ายชิปให้ฟูและมีประกาย */
+    .chip{
+      background: linear-gradient(180deg,#fff5fb,#ffe4f1);
+      border:1.5px solid #ffd3e7;
+      box-shadow: 0 6px 16px rgba(255,140,180,.16), inset 0 2px 0 #fff;
+    }
+    .chip:hover{ transform: translateY(-2px) scale(1.02); }
 
-/* ปุ่มให้เด้งแบบเยลลี่ */
-@keyframes jelly{
-  0%,100%{transform:scale(1)}
-  30%{transform:scale(1.08,.92)}
-  50%{transform:scale(.96,1.04)}
-  70%{transform:scale(1.02,.98)}
-}
-.btn{
-  border:1.5px solid #ffc9e0;
-  box-shadow: 0 12px 28px rgba(255,116,183,.28);
-}
-.btn:hover{ animation:jelly .5s both; }
+    /* ปุ่มให้เด้งแบบเยลลี่ */
+    @keyframes jelly{
+      0%,100%{transform:scale(1)}
+      30%{transform:scale(1.08,.92)}
+      50%{transform:scale(.96,1.04)}
+      70%{transform:scale(1.02,.98)}
+    }
+    .btn{
+      border:1.5px solid #ffc9e0;
+      box-shadow: 0 12px 28px rgba(255,116,183,.28);
+    }
+    .btn:hover{ animation:jelly .5s both; }
 
-/* ปุ่มผีแบบน่ารัก */
-.btn--ghost{
-  background:linear-gradient(180deg,#fff,#fff6fa);
-  border:1.5px solid #ffd3e7;
-  color:#a03f78;
-}
+    /* ปุ่มผีแบบน่ารัก */
+    .btn--ghost{
+      background:linear-gradient(180deg,#fff,#fff6fa);
+      border:1.5px solid #ffd3e7;
+      color:#a03f78;
+    }
 
-/* อวาตาร์แบบสติ๊กเกอร์ + เคลื่อนไหวเบาๆ */
-.avatar{
-  transition:.25s ease;
-  filter: drop-shadow(0 18px 32px rgba(224,70,146,.22));
-}
-.avatar-wrap:hover .avatar{
-  transform: translateY(-3px) rotate(-1.5deg);
-}
+    /* อวาตาร์แบบสติ๊กเกอร์ + เคลื่อนไหวเบาๆ */
+    .avatar{
+      transition:.25s ease;
+      filter: drop-shadow(0 18px 32px rgba(224,70,146,.22));
+    }
+    .avatar-wrap:hover .avatar{
+      transform: translateY(-3px) rotate(-1.5deg);
+    }
 
-/* กล่อง section ฟูขึ้น */
-.section{
-  background:linear-gradient(180deg,#fff9fc,#fff);
-  border:1.5px solid #ffd7ea;
-  box-shadow: 0 14px 28px rgba(255,170,200,.18);
-}
+    /* กล่อง section ฟูขึ้น */
+    .section{
+      background:linear-gradient(180deg,#fff9fc,#fff);
+      border:1.5px solid #ffd7ea;
+      box-shadow: 0 14px 28px rgba(255,170,200,.18);
+    }
 
-/* หัวข้อ section ใส่ริบบิ้นเล็ก ๆ */
-.section h3{
-  position:relative;
-  padding-left:28px; /* ขยับข้อความออกไปหน่อย กันไม่ให้ทับ */
-}
+    /* หัวข้อ section ใส่ริบบิ้นเล็ก ๆ */
+    .section h3{
+      position:relative;
+      padding-left:28px; /* ขยับข้อความออกไปหน่อย กันไม่ให้ทับ */
+    }
 
-.section h3::before{
-  content:"🎀";
-  position:absolute;
-  left:0;   /* ไม่ทับข้อความแล้ว */
-  top:0;    /* วางตรงบรรทัด */
-  font-size:18px; /* เล็กลงน่ารักๆ */
-}
+    .section h3::before{
+      content:"🎀";
+      position:absolute;
+      left:0;   /* ไม่ทับข้อความแล้ว */
+      top:0;    /* วางตรงบรรทัด */
+      font-size:18px; /* เล็กลงน่ารักๆ */
+    }
 
+    /* รายการ bullet ให้เป็นซากุระ */
+    .about ul{ list-style:none; padding-left:0; }
+    .about li{ position:relative; padding-left:28px; }
+    .about li::before{
+      content:"🌸"; position:absolute; left:0; top:2px;
+      filter: drop-shadow(0 2px 0 rgba(255,140,180,.25));
+    }
 
-/* รายการ bullet ให้เป็นซากุระ */
-.about ul{ list-style:none; padding-left:0; }
-.about li{ position:relative; padding-left:28px; }
-.about li::before{
-  content:"🌸"; position:absolute; left:0; top:2px;
-  filter: drop-shadow(0 2px 0 rgba(255,140,180,.25));
-}
+    /* ป้ายเล็กใต้ชื่อ (badge) */
+    .badge{
+      display:inline-block;
+      margin:6px 0 10px;
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:800; font-size:12.5px;
+      color:#8d2c68;
+      background:linear-gradient(180deg,#fff5fb,#ffe4f1);
+      border:1.2px solid #ffd3e7;
+      box-shadow:0 6px 12px rgba(255,120,170,.18);
+    }
 
-/* ป้ายเล็กใต้ชื่อ (badge) */
-.badge{
-  display:inline-block;
-  margin:6px 0 10px;
-  padding:6px 10px;
-  border-radius:999px;
-  font-weight:800; font-size:12.5px;
-  color:#8d2c68;
-  background:linear-gradient(180deg,#fff5fb,#ffe4f1);
-  border:1.2px solid #ffd3e7;
-  box-shadow:0 6px 12px rgba(255,120,170,.18);
-}
+    /* pill ติดต่อ ใส่ไอคอนด้วย pseudo */
+    .pill.email::before{ content:"📧 "; }
+    .pill.fb::before{ content:"📘 "; }
 
-/* pill ติดต่อ ใส่ไอคอนด้วย pseudo */
-.pill.email::before{ content:"📧 "; }
-.pill.fb::before{ content:"📘 "; }
     :root{
       /* พาเลตชมพูพาสเทล */
       --bg-1:#fff0f6;
@@ -125,7 +125,7 @@
       display:grid;
       place-items:center;
       padding:40px 16px;
-      overflow:hidden; /* กันซากุระเลื่อน scrollbar */
+      overflow:hidden;
     }
 
     .shell{ width:min(980px,100%); }
@@ -230,17 +230,22 @@
       .avatar-wrap{ margin-top:-90px; }
     }
 
-    /* 🌸 ซากุระร่วง */
-    .sakura{
+    /* 🌸 ซากุระพื้นหลัง: ลอย + หมุน + จาง + ลมพัด */
+    .bg-sakura {
       position: fixed;
-      top:-2vh;
-      pointer-events:none;
-      animation: fall linear forwards;
+      pointer-events: none;
+      z-index: 0;
+      animation: float-rotate-wind 12s ease-in-out forwards;
     }
-    @keyframes fall{
-      to{
-        transform: translateY(105vh) rotate(360deg);
-      }
+
+    @keyframes float-rotate-wind {
+      0%   { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+      10%  { opacity: 1; }
+      30%  { transform: translate(-20px, -20px) rotate(120deg); }
+      50%  { transform: translate(15px, -30px) rotate(180deg); opacity: 0.9; }
+      70%  { transform: translate(-10px, -20px) rotate(260deg); }
+      90%  { opacity: 1; }
+      100% { transform: translate(0, 0) rotate(360deg); opacity: 0; }
     }
   </style>
 </head>
@@ -261,7 +266,6 @@
           <div class="badge">Haru Urara Fan ✨</div>
           <div class="subtitle">สมาชิกทีม B-8 Lungs</div>
 
-
           <div class="chips">
             <span class="chip">Hobby: เล่นบาส</span>
             <span class="chip">Hobby: ดูเมะ</span>
@@ -269,31 +273,27 @@
           </div>
 
           <div class="section">
-          <h3>ติดต่อ</h3>
-          <span class="pill email">
-    Email: <a href="mailto:notsoontorn5678@gmail.com">notsoontorn5678@gmail.com</a>
-  </span>
-  <span class="pill fb">
-    Facebook: <a href="https://www.facebook.com/phuttargue.soontorn" target="_blank" rel="noopener">phuttargue soontorn</a>
-  </span>
-</div>
-
+            <h3>ติดต่อ</h3>
+            <span class="pill email">
+              Email: <a href="mailto:notsoontorn5678@gmail.com">notsoontorn5678@gmail.com</a>
+            </span>
+            <span class="pill fb">
+              Facebook: <a href="https://www.facebook.com/phuttargue.soontorn" target="_blank" rel="noopener">phuttargue soontorn</a>
+            </span>
+          </div>
 
           <div class="section about">
-  <h3>เกี่ยวกับฉัน</h3>
-  <ul>
-    <li>ชอบเล่นบาสเกตบอล ชอบอ่านมังงะ ชอบฟังเพลง และชอบดูอนิเมะ</li>
-    <li>เกมที่ชอบ: <b>Wuthering Waves</b>, <b>BlueArchive</b>, <b>Uma Musume Pretty Derby</b></li>
-    <li>ชอบสีชมพู ชอบของหวาน และชอบของที่ดูนุ่มนิ่ม</li>
-  </ul>
-  <div class="actions">
-    <a class="btn" href="../index.html">ดูหน้า Team</a>
-    <a class="btn btn--ghost" href="kittinun.html">ไปหน้า Kittinun</a>
-    <!-- ปุ่มไปหาเพื่อนคนอื่น (ถ้ามีไฟล์) -->
-    <!-- <a class="btn btn--ghost" href="kitinan.html">ไปหน้า Kitinan</a> -->
-  </div>
-</div>
-
+            <h3>เกี่ยวกับฉัน</h3>
+            <ul>
+              <li>ชอบเล่นบาสเกตบอล ชอบอ่านมังงะ ชอบฟังเพลง และชอบดูอนิเมะ</li>
+              <li>เกมที่ชอบ: <b>Wuthering Waves</b>, <b>BlueArchive</b>, <b>Uma Musume Pretty Derby</b></li>
+              <li>ชอบสีชมพู ชอบของหวาน และชอบของที่ดูนุ่มนิ่ม</li>
+            </ul>
+            <div class="actions">
+              <a class="btn" href="../index.html">ดูหน้า Team</a>
+              <a class="btn btn--ghost" href="kittinun.html">ไปหน้า Kittinun</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -304,18 +304,33 @@
   <script>
     document.getElementById('y').textContent=new Date().getFullYear();
 
-    // 🌸 สร้างกลีบซากุระ
-    function createSakura(){
-      const sakura=document.createElement('div');
-      sakura.classList.add('sakura');
-      sakura.innerText='🌸';
-      sakura.style.left=Math.random()*100+'vw';
-      sakura.style.fontSize=12+Math.random()*20+'px';
-      sakura.style.animationDuration=3+Math.random()*5+'s';
+    // 🌸 ฟังก์ชันสร้างซากุระพื้นหลัง
+    function createBgSakura(){
+      const sakura = document.createElement('div');
+      sakura.textContent = '🌸';
+      sakura.classList.add('bg-sakura');
+
+      // 🌸 สุ่มตำแหน่งเริ่มต้น
+      sakura.style.top = Math.random() * 100 + 'vh';
+      sakura.style.left = Math.random() * 100 + 'vw';
+
+      // 🌸 ขนาดและความเร็วแอนิเมชัน
+      sakura.style.fontSize = (40 + Math.random() * 50) + 'px'; // 40–90px
+      sakura.style.animationDuration = (10 + Math.random() * 6) + 's'; // 10–16s
+
       document.body.appendChild(sakura);
-      setTimeout(()=>sakura.remove(),8000);
+
+      // 🌸 ลบออกเมื่อจบ animation แล้วสร้างใหม่
+      sakura.addEventListener('animationend', () => {
+        sakura.remove();
+        createBgSakura();
+      });
     }
-    setInterval(createSakura,420);
+
+    // 🌸 เริ่มต้นด้วย 20 ดอก
+    for(let i=0; i<20; i++){
+      createBgSakura();
+    }
   </script>
 </body>
 </html>
