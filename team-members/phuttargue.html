@@ -124,22 +124,16 @@
 
     /* 🌸 ซากุระพื้นหลัง */
      .bg-sakura {
-      position: fixed;
-      pointer-events: none;
-      z-index: -1; /* อยู่หลังการ์ด */
-      animation: float-rotate-wind 12s ease-in-out forwards;
-      opacity: .7;
-    }
+  position: fixed;
+  pointer-events: none;
+  z-index: 0; /* อยู่หลัง content แต่ไม่หายไปหลัง background */
+  animation: float-rotate-wind 12s ease-in-out forwards;
+}
 
-    @keyframes float-rotate-wind {
-      0%   { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-      10%  { opacity: 1; }
-      30%  { transform: translate(-20px, -20px) rotate(120deg); }
-      50%  { transform: translate(15px, -30px) rotate(180deg); opacity: 0.9; }
-      70%  { transform: translate(-10px, -20px) rotate(260deg); }
-      90%  { opacity: 1; }
-      100% { transform: translate(0, 0) rotate(360deg); opacity: 0; }
-    }
+/* 🌸 เนื้อหาทั้งหมดให้อยู่ชั้นบน */
+.shell, .card, .profile, .section, footer, .crumbs, .avatar, .btn {
+  position: relative;
+  z-index: 1;
   </style>
 </head>
 <body>
