@@ -1,12 +1,185 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Team B-8 Lungs</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Team B-8 Lungs</title>
+  <meta name="description" content="Team B-8 Lungs – member directory and links" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b1020;
+      --text: #e8ecf3;
+      --muted: #a8b3cf;
+      --brand: #5cc8ff;
+      --brand-2:#7d7bff;
+      --ring: rgba(124, 207, 255, 0.45);
+      --shadow: 0 10px 30px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.04) inset;
+      --radius: 16px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0; height:100%}
+    body{
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
+      background: radial-gradient(1200px 700px at 10% -10%, rgba(124,123,255,.18), transparent 60%),
+                  radial-gradient(900px 600px at 120% 20%, rgba(92,200,255,.18), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      display:flex; flex-direction:column;
+      min-height:100vh;
+    }
+
+    .nav{position: sticky; top: 0; z-index: 50; display:flex; align-items:center; justify-content:space-between; padding: 14px 22px; backdrop-filter: blur(10px); background: rgba(8,12,24,.55); border-bottom: 1px solid rgba(255,255,255,.06);}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
+    .logo{width: 36px; height: 36px; border-radius:10px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: 0 6px 18px rgba(124,123,255,.35);}
+    .nav a{color:var(--muted); text-decoration:none; font-weight:600}
+    .nav a:hover{color:var(--text)}
+
+    .hero{padding: 64px 20px 28px; text-align:center; max-width: 980px; margin: 0 auto;}
+    .title{font-size: clamp(28px, 4.5vw, 44px); margin: 6px 0 10px; font-weight:800}
+    .subtitle{color:var(--muted); font-size: clamp(14px, 2.1vw, 18px); line-height:1.6}
+
+    /* LIST (no search) */
+    .section{padding: 10px 16px 70px}
+    .list {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* แบ่งเป็นตาราง */
+  gap: 20px;
+}
+
+.card {
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.02));
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,.07);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;   /* วางจากบนลงล่าง */
+  align-items: center;      /* จัดกลาง */
+  justify-content: center;
+  text-align: center;
+  height: 220px;            /* สูงเท่ากัน */
+  transition: transform .2s ease, border-color .2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(124,123,255,.45);
+}
+
+.avatar {
+  width: 100px;    /* ขยายจาก 56 → 100 */
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.card h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.card p {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.card a {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+
+    .row{display:flex; flex-wrap:wrap; gap:14px}
+
+    footer{margin-top:auto; padding: 28px 16px; color: var(--muted); text-align:center; border-top:1px solid rgba(255,255,255,.06)}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;}
+    :focus-visible{ outline: 3px solid var(--brand); outline-offset:3px }
+  </style>
 </head>
 <body>
-    <h1>team-B-8_lungs</h1>
-    <ul>
-        <li><a href="team-members/kittinun.html">Kittinun Rattanasuphannawet</a></li>
-    </ul>
+  <header class="nav" role="navigation">
+    <div class="brand" aria-label="Site brand">
+      <div class="logo" aria-hidden="true"></div>
+      <span>Team B-8 Lungs</span>
+    </div>
+    <nav>
+      <a href="#members">Members</a>
+      &nbsp;·&nbsp;
+      <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1 class="title">Welcome to <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">Team B-8 Lungs</span></h1>
+    
+  </section>
+
+  <section class="section" id="members" aria-label="Team members">
+    <div class="list" id="memberList">
+      <article class="card" data-name="kittinun rattanasuphannawet">
+        <img class="avatar" src="team-members/images/kittinun.jpg" alt="Kittinun Rattanasuphannawet">
+
+        <div>
+          <h3>Kittinun Rattanasuphannawet</h3>
+          <p>Web • Embedded • Controls</p>
+        </div>
+        <a href="team-members/kittinun.html">Open</a>
+      </article>
+
+      <article class="card" data-name="kitinan kantakad">
+        <img class="avatar" src="team-members/images/kitinan.jpg" alt="kitinan kantakad">
+        <div>
+          <h3>Kitinan Kantakad</h3>
+          <p>Time Master</p>
+        </div>
+        <a href="team-members/kitinan.html">Open</a>
+      </article>
+
+      <article class="card" data-name="pannakron kongsawat">
+        <img class="avatar" src="team-members/images/pannakron.jpg" alt="pannakron kongsawat">
+        <div>
+          <h3>Pannakron Kongsawat</h3>
+          <p>Vilgax Family</p>
+        </div>
+        <a href="team-members/pannakron.html">Open</a>
+      </article>
+
+      <article class="card" data-name="tantikon chumjai">
+        <img class="avatar" src="team-members/images/tantikon.jpg" alt="tantikon chumjai">
+        <div>
+          <h3>Tantikon Chumjai</h3>
+          <p>Alien Hunter</p>
+        </div>
+        <a href="team-members/tantikon.html">Open</a>
+      </article>
+
+      <article class="card" data-name="phuttargue soontorn">
+        <img class="avatar" src="team-members/images/phuttargue.jpg" alt="phuttargue soontorn">
+        <div>
+          <h3>Phuttargue Soontorn</h3>
+          <p>CarBomb Member</p>
+        </div>
+        <a href="team-members/phuttargue.html">Open</a>
+      </article>
+    </div>
+  </section>
+
+  
+  <footer>
+    © <span id="y"></span> Team B-8 Lungs · Built with chatGPT · Power by chatGPT · It's not a joke bro!
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // Search functionality removed as requested
+  </script>
 </body>
 </html>

@@ -1,11 +1,135 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kittinun Rattanasuphannawet — Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020; --panel:#101833; --panel2:#0e152d;
+      --text:#e8ecf3; --muted:#a8b3cf; --brand:#5cc8ff; --brand2:#7d7bff;
+      --ring:rgba(124,207,255,.35); --radius:18px;
+      --shadow:0 12px 34px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.05) inset;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%}
+    body{
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
+      background:
+        radial-gradient(1200px 700px at 10% -10%, rgba(124,123,255,.16), transparent 60%),
+        radial-gradient(900px 600px at 120% 20%, rgba(92,200,255,.16), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      display:flex; min-height:100vh; padding:24px;
+    }
+    .wrap{max-width:980px;margin:0 auto; width:100%}
+    .top{
+      display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;
+    }
+    .back{color:var(--muted); text-decoration:none; font-weight:600; border:1px solid rgba(255,255,255,.08);
+      padding:10px 14px; border-radius:12px; background:rgba(255,255,255,.03)}
+    .back:hover{color:var(--text); border-color:rgba(124,123,255,.4)}
+    .card{
+      display:grid; grid-template-columns: 160px 1fr; gap:22px;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.07); border-radius:var(--radius); box-shadow:var(--shadow);
+      padding:22px;
+    }
+    .avatar{
+      position:relative; width:160px; height:160px; border-radius:26px; overflow:hidden; flex:0 0 auto;
+      background:linear-gradient(135deg, var(--brand), var(--brand2));
+    }
+    .avatar img{
+      width:100%; height:100%; object-fit:cover;
+      border-radius:22px; border:4px solid rgba(255,255,255,.08);
+      box-shadow:0 0 0 6px var(--ring);
+    }
+    h1{margin:0 0 6px; font-size: clamp(22px, 4vw, 34px)}
+    .subtitle{color:var(--muted); margin:0 0 12px}
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 0}
+    .chip{padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03); color:var(--muted); font-size:13px}
+    .section{
+      margin-top:18px; display:grid; grid-template-columns: 1fr 1fr; gap:16px;
+    }
+    .panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border:1px solid rgba(255,255,255,.07); border-radius:16px; padding:16px; box-shadow:var(--shadow);
+    }
+    .panel h3{margin:0 0 10px; font-size:16px}
+    ul{margin:0; padding-left:18px; line-height:1.8}
+    .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; gap:10px; text-decoration:none; font-weight:700;
+      padding:10px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(135deg, rgba(124,123,255,.22), rgba(92,200,255,.22)); color:var(--text);
+      box-shadow:var(--shadow)
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .muted{color:var(--muted)}
+    footer{margin-top:20px; color:var(--muted); font-size:13px; text-align:center}
+    @media (max-width:720px){
+      .card{grid-template-columns: 1fr}
+      .avatar{width:140px;height:140px}
+      .section{grid-template-columns:1fr}
+    }
+  </style>
+</head>
 <body>
+  <main class="wrap">
+    <div class="top">
+      <a class="back" href="../index.html">← Back to Team</a>
+    </div>
 
+    <section class="card">
+      <div class="avatar">
+        <!-- เปลี่ยนพาธรูปได้ตามไฟล์จริง -->
+        <img src="images/kittinun.jpg" alt="Kittinun Rattanasuphannawet">
+      </div>
 
-<h1>Kittinun Rattanasuphannawet</h1>
-<p>This is the member page for Kittinun Rattanasuphannawet.</p>
+      <div>
+        <h1>Kittinun Rattanasuphannawet</h1>
+        <p class="subtitle">สมาชิกทีม B-8 Lungs</p>
 
+        <div class="chips">
+          <span class="chip">Hobby: อ่านหนังสือ</span>
+          <span class="chip">Hobby: ฟังเพลง</span>
+          <span class="chip">Future: Travel the world</span>
+        </div>
 
+        <div class="section">
+          <div class="panel">
+            <h3>ติดต่อ</h3>
+            <div class="row" style="gap:12px;">
+              <a class="btn" href="mailto:kittinun.r@gmail.com">Email: kittinun.r@gmail.com</a>
+              <a class="btn" href="https://www.facebook.com/nxng.f.n.ta.kitti.nanth" target="_blank" rel="noopener">
+                Facebook: น้องแฟนต้ากิตตินันท์
+                </a>
+
+            </div>
+            <p class="muted" style="margin-top:10px"> อยากรู้อะไรเดินมาถามได้นะคราบ ผมไม่ตีหรอก อิๆ</p>
+          </div>
+
+          <div class="panel">
+            <h3>เกี่ยวกับฉัน</h3>
+            <ul>
+              <li>ชอบอ่าน ไลท์โนเวล/มังงะ และชอบฟังเพลงญี่ปุ่นกับ อังกฤษ</li>
+              <li>เกมโปรด: <strong>Wuthering Waves ,Azurlane ,BlueArchive</strong></li>
+              <li>อาหารที่ชอบ: <strong> Tonkotsu ramen</strong> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>© <span id="y"></span> Team B-8 Lungs</footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
