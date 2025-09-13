@@ -5,95 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Phuttargue Soontorn — B-8 Lungs</title>
 
-  <!-- ฟอนต์น่ารักอ่านง่าย -->
+  <!-- ฟอนต์ -->
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
-    .name{ letter-spacing:.4px; }
-    .subtitle{ color:#a2517f }
-
-    /* ป้ายชิปให้ฟูและมีประกาย */
-    .chip{
-      background: linear-gradient(180deg,#fff5fb,#ffe4f1);
-      border:1.5px solid #ffd3e7;
-      box-shadow: 0 6px 16px rgba(255,140,180,.16), inset 0 2px 0 #fff;
-    }
-    .chip:hover{ transform: translateY(-2px) scale(1.02); }
-
-    /* ปุ่มให้เด้งแบบเยลลี่ */
-    @keyframes jelly{
-      0%,100%{transform:scale(1)}
-      30%{transform:scale(1.08,.92)}
-      50%{transform:scale(.96,1.04)}
-      70%{transform:scale(1.02,.98)}
-    }
-    .btn{
-      border:1.5px solid #ffc9e0;
-      box-shadow: 0 12px 28px rgba(255,116,183,.28);
-    }
-    .btn:hover{ animation:jelly .5s both; }
-
-    /* ปุ่มผีแบบน่ารัก */
-    .btn--ghost{
-      background:linear-gradient(180deg,#fff,#fff6fa);
-      border:1.5px solid #ffd3e7;
-      color:#a03f78;
-    }
-
-    /* อวาตาร์แบบสติ๊กเกอร์ + เคลื่อนไหวเบาๆ */
-    .avatar{
-      transition:.25s ease;
-      filter: drop-shadow(0 18px 32px rgba(224,70,146,.22));
-    }
-    .avatar-wrap:hover .avatar{
-      transform: translateY(-3px) rotate(-1.5deg);
-    }
-
-    /* กล่อง section ฟูขึ้น */
-    .section{
-      background:linear-gradient(180deg,#fff9fc,#fff);
-      border:1.5px solid #ffd7ea;
-      box-shadow: 0 14px 28px rgba(255,170,200,.18);
-    }
-
-    /* หัวข้อ section ใส่ริบบิ้นเล็ก ๆ */
-    .section h3{
-      position:relative;
-      padding-left:28px;
-    }
-    .section h3::before{
-      content:"🎀";
-      position:absolute;
-      left:0;
-      top:0;
-      font-size:18px;
-    }
-
-    /* รายการ bullet ให้เป็นซากุระ */
-    .about ul{ list-style:none; padding-left:0; }
-    .about li{ position:relative; padding-left:28px; }
-    .about li::before{
-      content:"🌸"; position:absolute; left:0; top:2px;
-      filter: drop-shadow(0 2px 0 rgba(255,140,180,.25));
-    }
-
-    /* ป้ายเล็กใต้ชื่อ (badge) */
-    .badge{
-      display:inline-block;
-      margin:6px 0 10px;
-      padding:6px 10px;
-      border-radius:999px;
-      font-weight:800; font-size:12.5px;
-      color:#8d2c68;
-      background:linear-gradient(180deg,#fff5fb,#ffe4f1);
-      border:1.2px solid #ffd3e7;
-      box-shadow:0 6px 12px rgba(255,120,170,.18);
-    }
-
-    /* pill ติดต่อ ใส่ไอคอนด้วย pseudo */
-    .pill.email::before{ content:"📧 "; }
-    .pill.fb::before{ content:"📘 "; }
-
     :root{
       --bg-1:#fff0f6;
       --bg-2:#ffe4f1;
@@ -101,25 +16,19 @@
       --pink-100:#ffd1e6;
       --pink-300:#ffb3d9;
       --pink-500:#ff74b7;
-      --pink-600:#ff5aa8;
       --pink-700:#e04692;
+      --stroke:#ffd9eb;
       --ink:#3f0d2b;
       --muted:#7b375d;
-      --card:#ffffffcc;
-      --stroke:#ffd9eb;
-      --shadow: 0 20px 40px rgba(255, 116, 183, 0.25);
+      --shadow:0 20px 40px rgba(255,116,183,0.25);
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{box-sizing:border-box;}
     body{
       margin:0;
-      font-family: Nunito, Quicksand, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Helvetica Neue", sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(60vmax 60vmax at 15% 15%, #ffb3d933, transparent 60%),
-        radial-gradient(65vmax 65vmax at 85% 10%, #ffd1e633, transparent 60%),
-        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+      font-family: Nunito, Quicksand, sans-serif;
+      color:var(--ink);
+      background: linear-gradient(180deg,var(--bg-1),var(--bg-2));
       display:grid;
       place-items:center;
       padding:40px 16px;
@@ -127,99 +36,105 @@
     }
 
     .shell{ width:min(980px,100%); }
+    .crumbs{font-size:14px;color:var(--muted);margin-bottom:16px;}
+    .crumbs a{color:var(--pink-700);text-decoration:none;}
 
-    .crumbs{
-      font-size:14px; color:var(--muted); margin-bottom:16px;
-    }
-    .crumbs a{
-      color:var(--pink-700); text-decoration:none; border-bottom:1px dashed var(--pink-300);
-    }
     .card{
-      background: var(--card);
+      background:#fff;
       border:1.5px solid var(--stroke);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
+      border-radius:24px;
+      box-shadow:var(--shadow);
       overflow:hidden;
-      position: relative;
-      z-index: 1;
     }
 
     .banner{
       height:120px;
-      background: radial-gradient(circle at 20% 30%, var(--pink-300), transparent 40%),
-                  radial-gradient(circle at 80% 20%, var(--pink-100), transparent 45%),
-                  linear-gradient(120deg, var(--pink-300), var(--pink-100));
+      background:linear-gradient(120deg,var(--pink-300),var(--pink-100));
     }
 
-    .profile{
-      display:grid;
-      grid-template-columns: 190px 1fr;
-      gap:24px;
-      padding:22px 22px 26px;
-    }
-
-    .avatar-wrap{ margin-top:-70px; display:grid; place-items:center; }
+    .profile{display:grid;grid-template-columns:190px 1fr;gap:24px;padding:22px;}
+    .avatar-wrap{margin-top:-70px;display:grid;place-items:center;}
     .avatar{
-      width:190px; height:190px; border-radius:24px; object-fit:cover; background:#fff;
-      border:6px solid #fff;
-      box-shadow: 0 12px 28px rgba(224,70,146,.25);
-      position:relative;
+      width:190px;height:190px;border-radius:24px;object-fit:cover;background:#fff;
+      border:6px solid #fff;box-shadow:0 12px 28px rgba(224,70,146,.25);position:relative;
     }
     .avatar::after{
-      content:""; position:absolute; inset:-6px; border-radius:28px;
-      padding:3px; background: linear-gradient(135deg, var(--pink-500), #ffd6ea);
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude;
+      content:"";position:absolute;inset:-6px;border-radius:28px;
+      padding:3px;background:linear-gradient(135deg,var(--pink-500),#ffd6ea);
+      -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor;mask-composite:exclude;
     }
 
-    .chips{ display:flex; flex-wrap:wrap; gap:10px; margin:8px 0 16px; }
+    .name{margin:0;font-size:32px;font-weight:800;}
+    .subtitle{color:var(--muted);margin-bottom:12px;}
+    .badge{
+      display:inline-block;margin:6px 0 10px;padding:6px 10px;
+      border-radius:999px;font-weight:800;font-size:12.5px;color:#8d2c68;
+      background:linear-gradient(180deg,#fff5fb,#ffe4f1);border:1.2px solid #ffd3e7;
+    }
 
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 16px;}
+    .chip{
+      padding:8px 12px;border-radius:999px;font-size:13.5px;font-weight:700;
+      color:#6b1743;background:var(--pink-50);border:1px solid var(--stroke);
+    }
+
+    .section{
+      background:#fff7fb;
+      border:1.5px solid var(--stroke);
+      border-radius:18px;
+      padding:16px 18px;
+      margin-top:16px;
+      box-shadow:0 10px 24px rgba(255,179,217,.18);
+    }
+    .section h3{margin:0 0 10px;font-size:18px;color:var(--pink-700);}
+
+    /* pill สวย ๆ */
     .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px; border-radius:12px; margin:6px 8px 0 0;
-      background: #ffe6f2; border:1px solid var(--stroke); color:#5a1640; font-weight:700;
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 14px;border-radius:999px;margin:6px 8px 0 0;
+      background:#ffe6f2;border:1.5px solid var(--stroke);color:#5a1640;font-weight:700;
+      box-shadow:0 3px 8px rgba(255,120,170,0.18);
     }
-    .pill a{ color:var(--pink-700); text-decoration:none; }
+    .pill a{color:var(--pink-700);text-decoration:none;}
 
-    .actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:18px; }
+    /* icon bubble */
+    .pill::before{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:22px;height:22px;border-radius:50%;color:#fff;font-size:12px;
+    }
+    .pill.email::before{content:"✉";background:#ff8fc6;}
+    .pill.fb::before{content:"f";background:#3b5998;font-family:Arial;font-weight:bold;}
+
+    .about ul{list-style:none;padding-left:0;}
+    .about li{position:relative;padding-left:28px;margin:6px 0;}
+    .about li::before{content:"🌸";position:absolute;left:0;top:2px;}
+
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;}
     .btn{
-      appearance:none; border:none; cursor:pointer; text-decoration:none;
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:12px 16px; border-radius:12px; font-weight:800;
-      background: linear-gradient(120deg, var(--pink-500), #ffd1e6);
-      color:#4a0f2e; box-shadow: 0 10px 22px rgba(255,116,183,.35);
-      transition: transform .08s ease, filter .2s ease;
+      padding:12px 16px;border-radius:12px;font-weight:800;text-decoration:none;
+      background:linear-gradient(120deg,var(--pink-500),#ffd1e6);color:#4a0f2e;
+      box-shadow:0 10px 22px rgba(255,116,183,.35);
     }
-    .btn:hover{ filter: brightness(1.05); transform: translateY(-1px); }
-    .btn--ghost{
-      background:#fff; border:1.5px solid var(--stroke); color:var(--pink-700);
-      box-shadow:none;
-    }
+    .btn--ghost{background:#fff;border:1.5px solid var(--stroke);color:var(--pink-700);}
 
-    footer{ text-align:center; color:var(--muted); font-size:12.5px; margin-top:14px; }
+    footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:14px;}
 
-    @media (max-width: 760px){
-      .profile{ grid-template-columns:1fr; }
-      .avatar-wrap{ margin-top:-90px; }
-    }
+    @media(max-width:760px){.profile{grid-template-columns:1fr;}.avatar-wrap{margin-top:-90px;}}
 
     /* 🌸 ซากุระพื้นหลัง */
-    .bg-sakura {
-      position: fixed;
-      pointer-events: none;
-      z-index: -1; /* อยู่หลังการ์ด */
-      animation: float-rotate-wind 12s ease-in-out forwards;
-      opacity: .7;
+    .bg-sakura{
+      position:fixed;pointer-events:none;z-index:0;
+      animation:float-rotate-wind 12s ease-in-out forwards;
     }
-
-    @keyframes float-rotate-wind {
-      0%   { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-      10%  { opacity: 1; }
-      30%  { transform: translate(-20px, -20px) rotate(120deg); }
-      50%  { transform: translate(15px, -30px) rotate(180deg); opacity: 0.9; }
-      70%  { transform: translate(-10px, -20px) rotate(260deg); }
-      90%  { opacity: 1; }
-      100% { transform: translate(0, 0) rotate(360deg); opacity: 0; }
+    @keyframes float-rotate-wind{
+      0%{transform:translate(0,0) rotate(0deg);opacity:0;}
+      10%{opacity:1;}
+      30%{transform:translate(-20px,-20px) rotate(120deg);}
+      50%{transform:translate(15px,-30px) rotate(180deg);opacity:.9;}
+      70%{transform:translate(-10px,-20px) rotate(260deg);}
+      90%{opacity:1;}
+      100%{transform:translate(0,0) rotate(360deg);opacity:0;}
     }
   </style>
 </head>
@@ -229,7 +144,6 @@
 
     <section class="card">
       <div class="banner" aria-hidden="true"></div>
-
       <div class="profile">
         <div class="avatar-wrap">
           <img class="avatar" src="images/phuttargue.jpg" alt="Phuttargue">
@@ -278,46 +192,19 @@
   <script>
     document.getElementById('y').textContent=new Date().getFullYear();
 
-    // 🌸 สร้างกลีบซากุระแบบสุ่ม ไม่บังการ์ด
+    // 🌸 ซากุระพื้นหลัง
     function createBgSakura(){
-      const sakura = document.createElement('div');
-      sakura.textContent = '🌸';
+      const sakura=document.createElement('div');
+      sakura.textContent='🌸';
       sakura.classList.add('bg-sakura');
-
-      // ขนาดและความเร็ว
-      sakura.style.fontSize = (40 + Math.random() * 50) + 'px';
-      sakura.style.animationDuration = (10 + Math.random() * 6) + 's';
-
-      // สุ่มตำแหน่ง โดยเลี่ยงการ์ด
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
-      const card = document.querySelector('.card');
-      const box  = card ? card.getBoundingClientRect() : {left:0,top:0,right:0,bottom:0};
-      const pad  = 60;
-
-      let x, y, tries = 0;
-      do {
-        x = Math.random() * vw;
-        y = Math.random() * vh;
-        tries++;
-      } while (
-        tries < 30 &&
-        x > (box.left - pad) && x < (box.right + pad) &&
-        y > (box.top  - pad) && y < (box.bottom + pad)
-      );
-
-      sakura.style.left = x + 'px';
-      sakura.style.top  = y + 'px';
-
+      sakura.style.top=Math.random()*100+'vh';
+      sakura.style.left=Math.random()*100+'vw';
+      sakura.style.fontSize=(40+Math.random()*50)+'px';
+      sakura.style.animationDuration=(10+Math.random()*6)+'s';
       document.body.appendChild(sakura);
-
-      sakura.addEventListener('animationend', () => {
-        sakura.remove();
-        createBgSakura();
-      });
+      sakura.addEventListener('animationend',()=>{sakura.remove();createBgSakura();});
     }
-
-    for (let i=0; i<20; i++) createBgSakura();
+    for(let i=0;i<20;i++){createBgSakura();}
   </script>
 </body>
 </html>
