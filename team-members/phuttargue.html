@@ -125,20 +125,28 @@
     /* 🌸 ซากุระพื้นหลัง */
      /* 🌸 ซากุระพื้นหลัง */
 /* 🌸 ซากุระพื้นหลัง — อยู่หลัง content และลอยแกว่งตลอด */
-.bg-sakura{
+/* 🌸 ซากุระพื้นหลัง */
+.bg-sakura {
   position: fixed;
   pointer-events: none;
-  z-index: 0;                 /* หลัง content แต่ยังอยู่เหนือ background */
+  z-index: 0;
   will-change: transform;
   filter: drop-shadow(0 2px 0 rgba(255,140,180,.12));
   animation: sakuraFloat var(--dur, 12s) ease-in-out infinite;
 }
 
-/* content ให้อยู่ชั้นบนกว่าซากุระ */
-.shell, .card, .profile, .section, footer, .crumbs, .avatar, .btn{
+@keyframes sakuraFloat {
+  0%   { transform: translate(0,0) rotate(0deg) scale(var(--scale,1)); opacity:.9; }
+  50%  { transform: translate(var(--dx,30px), var(--dy,-20px)) rotate(180deg) scale(var(--scale,1)); }
+  100% { transform: translate(0,0) rotate(360deg) scale(var(--scale,1)); opacity:.9; }
+}
+
+/* บังคับ content อยู่บน */
+.shell, .card, .profile, .section, footer, .crumbs, .avatar, .btn {
   position: relative;
   z-index: 1;
 }
+
 
 /* แอนิเมชันลอย + หมุน (ใช้ตัวแปรต่อดอก) */
 @keyframes sakuraFloat{
@@ -211,55 +219,37 @@
   </main>
 
   <script>
-  document.getElementById('y').textContent = new Date().getFullYear();
+  document.getElementById('y').textContent=new Date().getFullYear();
 
-  // 🌸 สร้างกลีบซากุระแบบสุ่ม (ลอยอยู่พื้นหลังตลอด)
   function createBgSakura(){
     const s = document.createElement('div');
     s.className = 'bg-sakura';
     s.textContent = '🌸';
 
-    // สุ่มตำแหน่งเริ่ม
+    // ตำแหน่งสุ่ม
     const vw = window.innerWidth, vh = window.innerHeight;
-    const card = document.querySelector('.card');
-    const box  = card ? card.getBoundingClientRect() : {left:0,top:0,right:0,bottom:0};
-    const pad  = 60;
+    s.style.left = Math.random() * vw + 'px';
+    s.style.top  = Math.random() * vh + 'px';
 
-    let x, y, tries = 0;
-    do{
-      x = Math.random() * vw;
-      y = Math.random() * vh;
-      tries++;
-    }while(
-      tries < 30 &&
-      x > (box.left - pad) && x < (box.right + pad) &&
-      y > (box.top  - pad) && y < (box.bottom + pad)
-    );
-
-    s.style.left = x + 'px';
-    s.style.top  = y + 'px';
-
-    // สุ่มขนาด/ทิศทาง/ความเร็ว/ดีเลย์ ต่อดอกด้วยตัวแปร CSS
-    const size  = 40 + Math.random()*50;         // 40–90px
-    const dx    = (Math.random()*60 - 30) + 'px'; // -30..30px
-    const dy    = (Math.random()*40 - 25) + 'px'; // -25..15px
-    const dur   = (10 + Math.random()*6)  + 's';  // 10–16s
-    const scale = 0.85 + Math.random()*0.5;       // 0.85–1.35
-    const delay = (Math.random()*6)     + 's';
+    // สุ่มค่าต่อดอก
+    const size  = 40 + Math.random()*50;
+    const dx    = (Math.random()*60 - 30) + 'px';
+    const dy    = (Math.random()*40 - 25) + 'px';
+    const dur   = (10 + Math.random()*6) + 's';
+    const scale = 0.85 + Math.random()*0.5;
 
     s.style.fontSize = size + 'px';
     s.style.setProperty('--dx', dx);
     s.style.setProperty('--dy', dy);
     s.style.setProperty('--dur', dur);
     s.style.setProperty('--scale', scale);
-    s.style.animationDelay = delay;
 
     document.body.appendChild(s);
   }
 
-  // เริ่มด้วย 20 ดอก (จะลอยวนตลอด)
-  for(let i=0;i<20;i++) createBgSakura();
+  // เริ่มด้วย 20 ดอก
+  for (let i=0;i<20;i++) createBgSakura();
 
-  // เติมเพิ่มเป็นครั้งคราวเพื่อให้ฉากดูมีชีวิต
+  // เติมเพิ่มทีหลังเพื่อให้สดใหม่
   setInterval(() => createBgSakura(), 4000);
 </script>
