@@ -59,15 +59,14 @@
     /* หัวข้อ section ใส่ริบบิ้นเล็ก ๆ */
     .section h3{
       position:relative;
-      padding-left:28px; /* ขยับข้อความออกไปหน่อย กันไม่ให้ทับ */
+      padding-left:28px;
     }
-
     .section h3::before{
       content:"🎀";
       position:absolute;
-      left:0;   /* ไม่ทับข้อความแล้ว */
-      top:0;    /* วางตรงบรรทัด */
-      font-size:18px; /* เล็กลงน่ารักๆ */
+      left:0;
+      top:0;
+      font-size:18px;
     }
 
     /* รายการ bullet ให้เป็นซากุระ */
@@ -96,7 +95,6 @@
     .pill.fb::before{ content:"📘 "; }
 
     :root{
-      /* พาเลตชมพูพาสเทล */
       --bg-1:#fff0f6;
       --bg-2:#ffe4f1;
       --pink-50:#ffe6f3;
@@ -142,6 +140,8 @@
       border-radius: 24px;
       box-shadow: var(--shadow);
       overflow:hidden;
+      position: relative;
+      z-index: 1;
     }
 
     .banner{
@@ -172,30 +172,7 @@
       -webkit-mask-composite: xor; mask-composite: exclude;
     }
 
-    .name{
-      margin:0 0 6px; font-size: clamp(26px, 3.2vw, 38px); font-weight:800; letter-spacing:.2px;
-    }
-    .subtitle{ color:var(--muted); margin-bottom:12px; }
-
     .chips{ display:flex; flex-wrap:wrap; gap:10px; margin:8px 0 16px; }
-    .chip{
-      padding:8px 12px; border-radius:999px; font-size:13.5px; font-weight:700;
-      color:#6b1743; background: var(--pink-50); border:1px solid var(--stroke);
-      transition: transform .08s ease;
-    }
-    .chip:hover{ transform: translateY(-1px); }
-
-    .section{
-      background: #fff7fb;
-      border:1.5px solid var(--stroke);
-      border-radius: 18px;
-      padding:16px 18px;
-      margin-top:16px;
-      box-shadow: 0 10px 24px rgba(255, 179, 217, .18);
-    }
-    .section h3{
-      margin:0 0 10px; font-size:18px; color:var(--pink-700);
-    }
 
     .pill{
       display:inline-flex; align-items:center; gap:8px;
@@ -203,10 +180,6 @@
       background: #ffe6f2; border:1px solid var(--stroke); color:#5a1640; font-weight:700;
     }
     .pill a{ color:var(--pink-700); text-decoration:none; }
-
-    ul{ margin:10px 0 0 18px; }
-    ul li{ margin:6px 0; }
-    ul li::marker{ color:var(--pink-700); }
 
     .actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:18px; }
     .btn{
@@ -230,12 +203,13 @@
       .avatar-wrap{ margin-top:-90px; }
     }
 
-    /* 🌸 ซากุระพื้นหลัง: ลอย + หมุน + จาง + ลมพัด */
+    /* 🌸 ซากุระพื้นหลัง */
     .bg-sakura {
       position: fixed;
       pointer-events: none;
-      z-index: 0;
+      z-index: -1; /* อยู่หลังการ์ด */
       animation: float-rotate-wind 12s ease-in-out forwards;
+      opacity: .7;
     }
 
     @keyframes float-rotate-wind {
@@ -304,33 +278,46 @@
   <script>
     document.getElementById('y').textContent=new Date().getFullYear();
 
-    // 🌸 ฟังก์ชันสร้างซากุระพื้นหลัง
+    // 🌸 สร้างกลีบซากุระแบบสุ่ม ไม่บังการ์ด
     function createBgSakura(){
       const sakura = document.createElement('div');
       sakura.textContent = '🌸';
       sakura.classList.add('bg-sakura');
 
-      // 🌸 สุ่มตำแหน่งเริ่มต้น
-      sakura.style.top = Math.random() * 100 + 'vh';
-      sakura.style.left = Math.random() * 100 + 'vw';
+      // ขนาดและความเร็ว
+      sakura.style.fontSize = (40 + Math.random() * 50) + 'px';
+      sakura.style.animationDuration = (10 + Math.random() * 6) + 's';
 
-      // 🌸 ขนาดและความเร็วแอนิเมชัน
-      sakura.style.fontSize = (40 + Math.random() * 50) + 'px'; // 40–90px
-      sakura.style.animationDuration = (10 + Math.random() * 6) + 's'; // 10–16s
+      // สุ่มตำแหน่ง โดยเลี่ยงการ์ด
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const card = document.querySelector('.card');
+      const box  = card ? card.getBoundingClientRect() : {left:0,top:0,right:0,bottom:0};
+      const pad  = 60;
+
+      let x, y, tries = 0;
+      do {
+        x = Math.random() * vw;
+        y = Math.random() * vh;
+        tries++;
+      } while (
+        tries < 30 &&
+        x > (box.left - pad) && x < (box.right + pad) &&
+        y > (box.top  - pad) && y < (box.bottom + pad)
+      );
+
+      sakura.style.left = x + 'px';
+      sakura.style.top  = y + 'px';
 
       document.body.appendChild(sakura);
 
-      // 🌸 ลบออกเมื่อจบ animation แล้วสร้างใหม่
       sakura.addEventListener('animationend', () => {
         sakura.remove();
         createBgSakura();
       });
     }
 
-    // 🌸 เริ่มต้นด้วย 20 ดอก
-    for(let i=0; i<20; i++){
-      createBgSakura();
-    }
+    for (let i=0; i<20; i++) createBgSakura();
   </script>
 </body>
 </html>
