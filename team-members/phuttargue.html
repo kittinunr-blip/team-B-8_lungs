@@ -187,22 +187,49 @@
     <footer>© <span id="y"></span> Team B-8 • made with 💗</footer>
   </main>
 
-  <script>
+   <script>
     document.getElementById('y').textContent=new Date().getFullYear();
 
-    // 🌸 ซากุระพื้นหลัง
+    // 🌸 สร้างกลีบซากุระแบบสุ่ม ไม่บังการ์ด
     function createBgSakura(){
-      const sakura=document.createElement('div');
-      sakura.textContent='🌸';
+      const sakura = document.createElement('div');
+      sakura.textContent = '🌸';
       sakura.classList.add('bg-sakura');
-      sakura.style.top=Math.random()*100+'vh';
-      sakura.style.left=Math.random()*100+'vw';
-      sakura.style.fontSize=(40+Math.random()*50)+'px';
-      sakura.style.animationDuration=(10+Math.random()*6)+'s';
+
+      // ขนาดและความเร็ว
+      sakura.style.fontSize = (40 + Math.random() * 50) + 'px';
+      sakura.style.animationDuration = (10 + Math.random() * 6) + 's';
+
+      // สุ่มตำแหน่ง โดยเลี่ยงการ์ด
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const card = document.querySelector('.card');
+      const box  = card ? card.getBoundingClientRect() : {left:0,top:0,right:0,bottom:0};
+      const pad  = 60;
+
+      let x, y, tries = 0;
+      do {
+        x = Math.random() * vw;
+        y = Math.random() * vh;
+        tries++;
+      } while (
+        tries < 30 &&
+        x > (box.left - pad) && x < (box.right + pad) &&
+        y > (box.top  - pad) && y < (box.bottom + pad)
+      );
+
+      sakura.style.left = x + 'px';
+      sakura.style.top  = y + 'px';
+
       document.body.appendChild(sakura);
-      sakura.addEventListener('animationend',()=>{sakura.remove();createBgSakura();});
+
+      sakura.addEventListener('animationend', () => {
+        sakura.remove();
+        createBgSakura();
+      });
     }
-    for(let i=0;i<20;i++){createBgSakura();}
+
+    for (let i=0; i<20; i++) createBgSakura();
   </script>
 </body>
 </html>
