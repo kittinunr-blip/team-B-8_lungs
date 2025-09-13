@@ -123,19 +123,17 @@
     @media(max-width:760px){.profile{grid-template-columns:1fr;}.avatar-wrap{margin-top:-90px;}}
 
     /* 🌸 ซากุระพื้นหลัง */
-    .bg-sakura{
-      position:fixed;pointer-events:none;z-index:0;
-      animation:float-rotate-wind 12s ease-in-out forwards;
-    }
-    @keyframes float-rotate-wind{
-      0%{transform:translate(0,0) rotate(0deg);opacity:0;}
-      10%{opacity:1;}
-      30%{transform:translate(-20px,-20px) rotate(120deg);}
-      50%{transform:translate(15px,-30px) rotate(180deg);opacity:.9;}
-      70%{transform:translate(-10px,-20px) rotate(260deg);}
-      90%{opacity:1;}
-      100%{transform:translate(0,0) rotate(360deg);opacity:0;}
-    }
+    .bg-sakura {
+  position: fixed;
+  pointer-events: none;
+  z-index: -1; /* ไปอยู่หลังทุก element */
+}
+
+/* และบังคับการ์ด/ข้อมูลให้ขึ้นมาอยู่ข้างบน */
+.card, .shell, .profile, .section, footer {
+  position: relative;
+  z-index: 1;
+}
   </style>
 </head>
 <body>
