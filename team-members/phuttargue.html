@@ -1,109 +1,196 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <title>Phuttargue Soontorn</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Phuttargue Soontorn — B-8 Lungs</title>
+
+  <!-- ฟอนต์น่ารักอ่านง่าย -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0f172a;
-      color: #f1f5f9;
-      display: flex;
-      justify-content: center;
-      padding: 40px;
+    :root{
+      /* พาเลตชมพูพาสเทล */
+      --bg-1:#fff0f6;         /* ชมพูขาว */
+      --bg-2:#ffe4f1;         /* ชมพูอ่อน */
+      --pink-50:#ffe6f3;
+      --pink-100:#ffd1e6;
+      --pink-300:#ffb3d9;
+      --pink-500:#ff74b7;
+      --pink-600:#ff5aa8;
+      --pink-700:#e04692;
+      --ink:#3f0d2b;
+      --muted:#7b375d;
+      --card:#ffffffcc;       /* glassy card */
+      --stroke:#ffd9eb;
+      --shadow: 0 20px 40px rgba(255, 116, 183, 0.25);
     }
-    .card {
-      background: #1e293b;
-      border-radius: 16px;
-      padding: 24px;
-      max-width: 900px;
-      display: flex;
-      gap: 24px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Nunito, Quicksand, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Helvetica Neue", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(60vmax 60vmax at 15% 15%, #ffb3d933, transparent 60%),
+        radial-gradient(65vmax 65vmax at 85% 10%, #ffd1e633, transparent 60%),
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+      display:grid;
+      place-items:center;
+      padding:40px 16px;
     }
-    .card img {
-      width: 180px;
-      height: 180px;
-      border-radius: 16px;
-      object-fit: cover;
+
+    .shell{ width:min(980px,100%); }
+
+    .crumbs{
+      font-size:14px; color:var(--muted); margin-bottom:16px;
     }
-    .info {
-      flex: 1;
+    .crumbs a{
+      color:var(--pink-700); text-decoration:none; border-bottom:1px dashed var(--pink-300);
     }
-    h1 {
-      margin: 0;
-      font-size: 28px;
-      font-weight: 700;
+    .card{
+      background: var(--card);
+      border:1.5px solid var(--stroke);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
     }
-    .subtitle {
-      color: #94a3b8;
-      margin-bottom: 16px;
+
+    .banner{
+      height:120px;
+      background: radial-gradient(circle at 20% 30%, var(--pink-300), transparent 40%),
+                  radial-gradient(circle at 80% 20%, var(--pink-100), transparent 45%),
+                  linear-gradient(120deg, var(--pink-300), var(--pink-100));
     }
-    .tags span {
-      display: inline-block;
-      background: #334155;
-      color: #e2e8f0;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 14px;
-      margin: 4px 8px 4px 0;
+
+    .profile{
+      display:grid;
+      grid-template-columns: 190px 1fr;
+      gap:24px;
+      padding:22px 22px 26px;
     }
-    .section {
-      margin-top: 16px;
-      background: #0f172a;
-      padding: 16px;
-      border-radius: 12px;
+
+    .avatar-wrap{ margin-top:-70px; display:grid; place-items:center; }
+    .avatar{
+      width:190px; height:190px; border-radius:24px; object-fit:cover; background:#fff;
+      border:6px solid #fff;
+      box-shadow: 0 12px 28px rgba(224,70,146,.25);
+      position:relative;
     }
-    .section h3 {
-      margin: 0 0 12px;
-      font-size: 18px;
-      color: #38bdf8;
+    .avatar::after{
+      content:""; position:absolute; inset:-6px; border-radius:28px;
+      padding:3px; background: linear-gradient(135deg, var(--pink-500), #ffd6ea);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
     }
-    .contact p, .about ul {
-      margin: 6px 0;
+
+    .name{
+      margin:0 0 6px; font-size: clamp(26px, 3.2vw, 38px); font-weight:800; letter-spacing:.2px;
     }
-    .contact a {
-      background: #334155;
-      color: #f8fafc;
-      text-decoration: none;
-      padding: 6px 10px;
-      border-radius: 6px;
+    .subtitle{ color:var(--muted); margin-bottom:12px; }
+
+    .chips{ display:flex; flex-wrap:wrap; gap:10px; margin:8px 0 16px; }
+    .chip{
+      padding:8px 12px; border-radius:999px; font-size:13.5px; font-weight:700;
+      color:#6b1743; background: var(--pink-50); border:1px solid var(--stroke);
+      transition: transform .08s ease;
     }
-    ul {
-      padding-left: 20px;
+    .chip:hover{ transform: translateY(-1px); }
+
+    .section{
+      background: #fff7fb;
+      border:1.5px solid var(--stroke);
+      border-radius: 18px;
+      padding:16px 18px;
+      margin-top:16px;
+      box-shadow: 0 10px 24px rgba(255, 179, 217, .18);
+    }
+    .section h3{
+      margin:0 0 10px; font-size:18px; color:var(--pink-700);
+    }
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:12px; margin:6px 8px 0 0;
+      background: #ffe6f2; border:1px solid var(--stroke); color:#5a1640; font-weight:700;
+    }
+    .pill a{ color:var(--pink-700); text-decoration:none; }
+
+    ul{ margin:10px 0 0 18px; }
+    ul li{ margin:6px 0; }
+    ul li::marker{ color:var(--pink-700); }
+
+    .actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:18px; }
+    .btn{
+      appearance:none; border:none; cursor:pointer; text-decoration:none;
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px; border-radius:12px; font-weight:800;
+      background: linear-gradient(120deg, var(--pink-500), #ffd1e6);
+      color:#4a0f2e; box-shadow: 0 10px 22px rgba(255,116,183,.35);
+      transition: transform .08s ease, filter .2s ease;
+    }
+    .btn:hover{ filter: brightness(1.05); transform: translateY(-1px); }
+    .btn--ghost{
+      background:#fff; border:1.5px solid var(--stroke); color:var(--pink-700);
+      box-shadow:none;
+    }
+
+    footer{ text-align:center; color:var(--muted); font-size:12.5px; margin-top:14px; }
+
+    @media (max-width: 760px){
+      .profile{ grid-template-columns:1fr; }
+      .avatar-wrap{ margin-top:-90px; }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <!-- เปลี่ยน path รูปตามที่คุณเก็บ -->
-    <img src="images/phuttargue.jpg" alt="Phuttargue">
+  <main class="shell">
+    <div class="crumbs"><a href="../index.html">← กลับหน้าแรกทีม</a></div>
 
-    <div class="info">
-      <h1>Phuttargue Soontorn</h1>
-      <div class="subtitle">สมาชิกทีม B-8 Lungs</div>
+    <section class="card">
+      <div class="banner" aria-hidden="true"></div>
 
-      <div class="tags">
-        <span>Hobby: เล่นบาส</span>
-        <span>Hobby: ดูเมะ</span>
-        <span>Future: Enjoy gaming & anime</span>
+      <div class="profile">
+        <div class="avatar-wrap">
+          <img class="avatar" src="images/phuttargue.jpg" alt="Phuttargue">
+        </div>
+
+        <div>
+          <h1 class="name">Phuttargue Soontorn</h1>
+          <div class="subtitle">สมาชิกทีม B-8 Lungs</div>
+
+          <div class="chips">
+            <span class="chip">Hobby: เล่นบาส</span>
+            <span class="chip">Hobby: ดูเมะ</span>
+            <span class="chip">Future: Enjoy gaming & anime</span>
+          </div>
+
+          <div class="section">
+            <h3>ติดต่อ</h3>
+            <span class="pill">Email: <a href="mailto:notsoontorn5678@gmail.com">notsoontorn5678@gmail.com</a></span>
+            <span class="pill">Facebook: <a href="#">phuttargue soontorn</a></span>
+          </div>
+
+          <div class="section">
+            <h3>เกี่ยวกับฉัน</h3>
+            <ul>
+              <li>ชอบเล่นบาสเกตบอล และดูอนิเมะ</li>
+              <li>เกมที่ชอบ: <b>Wuthering Waves</b>, <b>BlueArchive</b>, <b>Uma Musume Pretty Derby</b></li>
+              <li>ชอบดีไซน์นุ่ม ๆ โทนหวาน พาสเทล และ UI ที่ใช้แล้วแฮปปี้</li>
+            </ul>
+            <div class="actions">
+              <a class="btn" href="../index.html">ดูหน้า Team</a>
+              <a class="btn btn--ghost" href="kittinun.html">ไปหน้า Kittinun</a>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="section contact">
-        <h3>ติดต่อ</h3>
-        <p><b>Email:</b> <a href="mailto:notsoontorn5678@gmail.com">notsoontorn5678@gmail.com</a></p>
-        <p><b>Facebook:</b> <a href="#">phuttargue soontorn</a></p>
-      </div>
+    <footer>© <span id="y"></span> Team B-8 • made with 💗</footer>
+  </main>
 
-      <div class="section about">
-        <h3>เกี่ยวกับฉัน</h3>
-        <ul>
-          <li>ชอบเล่นบาสเกตบอล และดูอนิเมะ</li>
-          <li>เกมที่ชอบ: <b>Wuthering Waves</b>, <b>BlueArchive</b>, <b>Uma Musume Pretty Derby</b></li>
-          <li>รักการใช้เวลาว่างไปกับงานอดิเรกที่ทำให้สนุกและผ่อนคลาย</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
