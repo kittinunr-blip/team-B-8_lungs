@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kittinun — B-8 Lungs</title>
+
+  <!-- ฟอนต์ -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      /* โทนสีดาร์ก + ไฮไลต์ฟ้า */
+      --bg: #0b1220;
+      --bg-2: #0f172a;
+      --panel: #0f1b2e;
+      --ink: #dbe8ff;
+      --muted: #8aa0c7;
+      --chip: #111f36;
+      --chip-border: #1f3357;
+      --stroke: #1b2b49;
+      --accent: #5aa0ff;
+      --glow: 0 20px 60px rgba(90,160,255,.18);
+      --radius: 18px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Helvetica Neue", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 700px at 10% -10%, #122340 0%, transparent 60%),
+        radial-gradient(900px 600px at 90% -20%, #0f2248 0%, transparent 60%),
+        var(--bg);
+    }
+
+    /* โครง */
+    .shell{ max-width: 1060px; margin: 28px auto 64px; padding: 0 20px; }
+    .back{
+      display:inline-flex; gap:10px; align-items:center;
+      color:var(--muted); text-decoration:none; background: #0c1629;
+      border:1px solid var(--stroke); padding:10px 14px; border-radius: 12px;
+    }
+    .back:hover{ color:#cfe1ff; border-color:#25406f }
+
+    .card{
+      margin-top: 14px;
+      background: linear-gradient(180deg, #0e1a2d 0%, #0c1728 100%);
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--glow);
+      padding: 28px;
+    }
+
+    /* ส่วนบน */
+    .header{
+      display:grid;
+      grid-template-columns: 120px 1fr;
+      gap:20px;
+      align-items:center;
+      margin-bottom: 18px;
+    }
+    .avatar{
+      width:120px; height:120px; border-radius: 18px; object-fit:cover;
+      border:3px solid #1f2e4f; box-shadow: 0 10px 30px rgba(7,18,33,.45);
+      background:#0b1426;
+    }
+    h1{
+      margin:0 0 6px; font-size: clamp(26px, 3.6vw, 46px); line-height:1.1;
+      letter-spacing:.2px;
+      text-shadow: 0 6px 30px rgba(90,160,255,.12);
+    }
+    .subtitle{ color:var(--muted); margin-top:2px; }
+
+    /* ชิป/แท็ก */
+    .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+    .chip{
+      background: var(--chip); border: 1px solid var(--chip-border);
+      color:#b8c7e6; padding:8px 12px; border-radius: 999px; font-weight:600;
+      font-size: 14px;
+    }
+
+    /* คอนเทนต์ 2 คอลัมน์ */
+    .grid{
+      display:grid; gap: 22px; margin-top: 22px;
+      grid-template-columns: 1.05fr 1fr;
+    }
+    .panel{
+      background: linear-gradient(180deg,#0f1b2e,#0c1728);
+      border:1px solid var(--stroke); border-radius: var(--radius); padding: 18px;
+      box-shadow: 0 10px 24px rgba(9,17,30,.45);
+    }
+    .panel h3{ margin:0 0 14px; font-size:18px; letter-spacing:.3px }
+
+    /* กล่องบัตรติดต่อ */
+    .pill{
+      display:flex; align-items:center; gap:12px;
+      background: #0c1729; border:1px solid var(--stroke);
+      padding:14px 16px; border-radius: 14px; color:#d4e4ff;
+      margin: 10px 0;
+    }
+    .pill .icon{
+      width:28px; height:28px; display:grid; place-items:center;
+      border-radius: 8px; background:#112644; color:#79b0ff; font-weight:800;
+      box-shadow: 0 0 0 1px #19335b inset;
+      font-size:14px;
+    }
+    .pill a{ color:#d4e4ff; text-decoration:none; }
+    .pill a:hover{ color:#fff }
+
+    /* รายการ bullets */
+    .bullets{ list-style:none; padding:0; margin:0 }
+    .bullets li{
+      position:relative; padding-left:28px; margin: 10px 0; color:#cfe1ff;
+    }
+    .bullets li::before{
+      content:""; position:absolute; left:0; top:.5em;
+      width:8px; height:8px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 0 4px rgba(90,160,255,.12);
+    }
+    .bullets b{ color:#eaf2ff }
+
+    /* ฟุตเตอร์ */
+    footer{ color:var(--muted); text-align:center; margin-top: 18px; font-size: 14px }
+
+    /* ตอบสนอง */
+    @media (max-width: 860px){
+      .header{ grid-template-columns: 86px 1fr; }
+      .avatar{ width:86px; height:86px; border-radius: 14px; }
+      .grid{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+
+    <!-- ปุ่มย้อนกลับ -->
+    <a class="back" href="../index.html" aria-label="Back to Team">← Back to Team</a>
+
+    <!-- การ์ดหลัก -->
+    <section class="card">
+      <!-- ส่วนบน: อวาตาร์ + ชื่อ -->
+      <div class="header">
+        <!-- เปลี่ยนรูปตรง src -->
+        <img class="avatar" src="team-members/images/kittinun.jpg" alt="Kittinun Avatar" />
+        <div>
+          <h1>tantikon</h1>
+          <div class="subtitle">สมาชิกทีม B-8 Lungs</div>
+
+          <!-- แท็ก/ชิป ปรับข้อความได้ -->
+          <div class="chips">
+            <span class="chip">Hobby: ดูบอล</span>
+            <span class="chip">Hobby: ฟังเพลง</span>
+            <span class="chip">Future: Travel the world</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- เนื้อหา 2 คอลัมน์ -->
+      <div class="grid">
+        <!-- คอลัมน์ซ้าย: ติดต่อ -->
+        <div class="panel">
+          <h3>ติดต่อ</h3>
+
+          <div class="pill">
+            <div class="icon">✉</div>
+            <!-- แก้อีเมลตามจริง -->
+            <div>Email: <a href="mailto:tantikon@gmail.com">tantikon@gmail.com</a></div>
+          </div>
+
+          <div class="pill">
+            <div class="icon">f</div>
+            <!-- ลิงก์เฟซบุ๊กตามจริง -->
+            <div>Facebook: <a href="#" target="_blank" rel="noopener">Tantikon</a></div>
+          </div>
+
+          <p style="color:#9ab0d6; margin:12px 2px 0">
+            อยากรู้ว่าอะไรเดินมาถามได้ ผมไม่ติดหรอก อิๆ
+          </p>
+        </div>
+
+        <!-- คอลัมน์ขวา: เกี่ยวกับฉัน -->
+        <div class="panel">
+          <h3>เกี่ยวกับฉัน</h3>
+          <ul class="bullets">
+            <li>ชอบเที่ยว ชอบดูบอล</li>
+            <li>อาหารที่ชอบ: <b>ลาบ</b></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>© 2025 Team B-8 Lungs</footer>
+  </main>
+</body>
+</html>
