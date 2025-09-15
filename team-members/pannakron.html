@@ -243,3 +243,13 @@
 
     for (let i = 0; i < 10; i++) {
       setTimeout(createBall, i * 
+
+      setInterval(() => createBgSakura(), 4000);
+window.addEventListener('load', () => {
+      const music = document.getElementById('bg-music');
+      music.muted = false; // ปลด mute เพื่อให้มีเสียง
+      music.play().catch(() => {
+        console.log("ผู้ใช้ต้องคลิกเพื่อเปิดเสียง");
+      });
+    });
+    </script>
