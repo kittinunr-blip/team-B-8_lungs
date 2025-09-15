@@ -162,6 +162,35 @@
     opacity: .85;
   }
 }
+ #music-control {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #e27bcd;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+      transition: background 0.3s;
+    }
+    #music-control:hover {
+      background: #1b4332;
+    }
+
+    @media (max-width: 720px) {
+      .card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .left {
+        border-radius: 20px 20px 0 0;
+      }
+    }
 
 
 
@@ -221,6 +250,10 @@
     <source src="music/hachimi.mp3" type="audio/mpeg">
     เบราว์เซอร์ของคุณไม่รองรับการเล่นเพลง
   </audio>
+
+  <!-- ปุ่มเปิด/ปิดเพลง -->
+  <button id="music-control" aria-label="เปิด/ปิดเพลง">▶️</button>
+
   <script>
   document.getElementById('y').textContent=new Date().getFullYear();
 
@@ -252,14 +285,33 @@
 
   // เริ่มด้วย 20 ดอก
   for (let i=0;i<20;i++) createBgSakura();
+  
+  // เพลงและปุ่มเปิดปิดเพลง
+  const music = document.getElementById("bg-music");
+    const musicBtn = document.getElementById("music-control");
 
-  // เติมเพิ่มทีหลังเพื่อให้สดใหม่
-  setInterval(() => createBgSakura(), 4000);
-window.addEventListener('load', () => {
-      const music = document.getElementById('bg-music');
-      music.muted = false; // ปลด mute เพื่อให้มีเสียง
+    // ตั้งค่าเริ่มต้น (ปิดเสียงอัตโนมัติเพราะ muted)
+    let isPlaying = false;
+    music.muted = true;
+
+    musicBtn.addEventListener("click", () => {
+      if (isPlaying) {
+        music.pause();
+        music.muted = true;
+        musicBtn.textContent = "▶️";
+        isPlaying = false;
+      } else {
+        music.muted = false;
+        music.play();
+        musicBtn.textContent = "⏸️";
+        isPlaying = true;
+      }
+    });
+
+    // พยายามเล่นเพลงหลังโหลดเสร็จ (เสียงอาจจะยังไม่ขึ้นจนกว่าผู้ใช้กดปุ่ม)
+    window.addEventListener("load", () => {
       music.play().catch(() => {
         console.log("ผู้ใช้ต้องคลิกเพื่อเปิดเสียง");
       });
     });
-</script>
+  </script>
