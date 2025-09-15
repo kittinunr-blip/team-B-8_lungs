@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pannakron Kongsawat — Profile</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     body {
       margin: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(180deg, #d8f3dc, #b7e4c7, #95d5b2);
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top left, #1b4332, #081c15);
+      color: #f1faee;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      color: #081c15;
       overflow: hidden;
     }
 
     .card {
-      background: #ffffffee;
+      background: #1e2d24;
       border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 100, 0, 0.25);
+      box-shadow: 0 0 25px rgba(0, 255, 128, 0.2);
       max-width: 850px;
       width: 95%;
       display: grid;
@@ -28,80 +29,114 @@
       overflow: hidden;
       position: relative;
       z-index: 2;
+      border: 2px solid #52b788;
     }
 
     .left {
-      background: linear-gradient(160deg, #2d6a4f, #40916c);
+      background: linear-gradient(160deg, #2d6a4f, #081c15);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 25px;
-      color: #f1faee;
+      text-align: center;
     }
 
     .left img {
       width: 180px;
       height: 180px;
       border-radius: 50%;
-      border: 6px solid #95d5b2;
+      border: 5px solid #52b788;
       object-fit: cover;
       margin-bottom: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 0 10px #52b788;
     }
 
-    .left h2 { margin: 10px 0 0; font-size: 24px; }
-    .left p { margin: 6px 0; font-size: 14px; opacity: 0.9; }
+    .left h2 {
+      margin: 10px 0 5px;
+      font-size: 24px;
+    }
 
-    .right { padding: 30px; }
-    .right h3 { margin-bottom: 12px; font-size: 20px; color: #1b4332; }
+    .left p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
 
-    .chips { margin-bottom: 20px; }
+    .right {
+      padding: 30px;
+    }
+
+    .right h3 {
+      margin-bottom: 12px;
+      font-size: 20px;
+      color: #80ed99;
+    }
+
+    .chips {
+      margin-bottom: 20px;
+    }
+
     .chip {
       display: inline-block;
-      background: #d8f3dc;
-      border: 1.5px solid #95d5b2;
-      color: #1b4332;
+      background: #081c15;
+      border: 1px solid #52b788;
+      color: #b7e4c7;
       padding: 6px 12px;
-      border-radius: 20px;
+      border-radius: 16px;
       font-size: 13px;
       font-weight: bold;
       margin: 5px;
+      transition: all 0.3s;
+    }
+
+    .chip:hover {
+      background: #2d6a4f;
+      transform: scale(1.05);
     }
 
     .info {
-      background: #f6fff8;
-      border: 1.5px solid #b7e4c7;
+      background: #122a1f;
+      border: 1px solid #40916c;
       padding: 15px;
       border-radius: 12px;
       margin-bottom: 15px;
     }
-    .info p { margin: 6px 0; }
+
+    .info p {
+      margin: 6px 0;
+    }
 
     .btn {
       display: inline-block;
-      text-decoration: none;
       background: #52b788;
-      color: #fff;
+      color: #000;
       font-weight: bold;
-      padding: 12px 18px;
-      border-radius: 10px;
-      transition: 0.3s;
+      padding: 10px 16px;
+      border-radius: 8px;
       margin: 10px 10px 0 0;
-      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
     }
-    .btn:hover { background: #1b4332; transform: translateY(-2px); }
+
+    .btn:hover {
+      background: #1b4332;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .btn i {
+      margin-right: 6px;
+    }
 
     footer {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
       text-align: center;
-      margin-top: 20px;
-      color: #40916c;
+      color: #95d5b2;
       font-size: 13px;
-      z-index: 2;
-      position: relative;
     }
 
-    /* ⚽ ลูกฟุตบอลเคลื่อนไหว */
     .ball {
       position: fixed;
       pointer-events: none;
@@ -123,57 +158,81 @@
       }
       .left { border-radius: 20px 20px 0 0; }
     }
+
+    #music-btn {
+      background: none;
+      border: none;
+      color: #95d5b2;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: color 0.3s;
+    }
+
+    #music-btn:hover {
+      color: #ffffff;
+    }
   </style>
 </head>
 <body>
   <div class="card">
     <div class="left">
-      <img class="avatar" src="images/pannakron.jpg" alt="pannakron kongsawat">
+      <img src="images/pannakron.jpg" alt="pannakron kongsawat" />
       <h2>Pannakron Kongsawat</h2>
       <p>สมาชิกทีม B-8 Lungs</p>
+      <button id="music-btn"><i class="fas fa-volume-up"></i> หยุดเพลง</button>
     </div>
 
     <div class="right">
       <h3>เกี่ยวกับฉัน</h3>
       <div class="chips">
-        <span class="chip">Hobby: เล่นเกม</span>
-        <span class="chip">Hobby: เล่นกีฬา</span>
-        <span class="chip">Future: Football worldclass player</span>
+        <span class="chip">🎮 เล่นเกม</span>
+        <span class="chip">⚽ เล่นกีฬา</span>
+        <span class="chip">🌍 ฝัน: นักบอลระดับโลก</span>
       </div>
 
       <div class="info">
-        <p><b>Email:</b> pannakorn.kongsawat@gmail.com</p>
-        <p><b>Facebook:</b> pannakron kongsawat</p>
+        <p><b><i class="fas fa-envelope"></i> Email:</b> pannakorn.kongsawat@gmail.com</p>
+        <p><b><i class="fab fa-facebook"></i> Facebook:</b> pannakron kongsawat</p>
+        <p><b><i class="fab fa-instagram"></i> Instagram:</b>
+          <a href="https://instagram.com/more_phiny" target="_blank" style="color:#e1306c; text-decoration: underline;">
+            @more_phiny
+          </a>
+        </p>
       </div>
 
       <div class="info">
-        <p>🎮 เกมที่ชอบ: pes, rov, lol</p>
-        <p>💚 ชอบธรรมชาติ สีเขียว และ ฟุตบอล</p>
+        <p>🎮 เกมที่ชอบ: PES, ROV, LOL</p>
+        <p>💚 รักธรรมชาติ ชอบสีเขียว และฟุตบอล</p>
       </div>
 
-      <a href="../index.html" class="btn">← กลับหน้า Team</a>
-      <a href="kittinun.html" class="btn">ไปหน้า Kittinun</a>
-      <a href="phuttargue.html" class="btn">ไปหน้า phuttargue</a>
+      <!-- ปุ่มลิงก์ -->
+      <a href="../index.html" class="btn"><i class="fas fa-arrow-left"></i> กลับหน้า Team</a>
+      <a href="kittinun.html" class="btn"><i class="fas fa-user"></i> Kittinun</a>
+      <a href="phuttargue.html" class="btn"><i class="fas fa-user"></i> Phuttargue</a>
+      <a href="https://instagram.com/more_phiny" target="_blank" class="btn" style="background:#e1306c; color:#fff;">
+        <i class="fab fa-instagram"></i> @more_phiny
+      </a>
     </div>
   </div>
 
-  <footer>© 2025 Team B-8 • Green Theme</footer>
+  <footer>© 2025 Team B-8 • Neon Green Style</footer>
 
-  <!-- 🎵 auto-play -->
-  <audio id="bg-music" autoplay loop muted>
+  <!-- เพลงพื้นหลัง -->
+  <audio id="bg-music" autoplay loop>
     <source src="music/neymar.mp3" type="audio/mpeg">
     เบราว์เซอร์ของคุณไม่รองรับการเล่นเพลง
   </audio>
 
   <script>
-    // ⚽ ฟังก์ชันลูกบอล
+    // ลูกบอลตก
     function createBall() {
       const ball = document.createElement('div');
       ball.textContent = '⚽';
       ball.classList.add('ball');
       ball.style.fontSize = (30 + Math.random() * 40) + 'px';
       ball.style.left = Math.random() * 100 + 'vw';
-      const duration = 6 + Math.random() * 5;
+      const duration = 6 + Math.random() * 4;
       ball.style.animationDuration = duration + 's';
       document.body.appendChild(ball);
       ball.addEventListener('animationend', () => {
@@ -181,18 +240,6 @@
         createBall();
       });
     }
-    for (let i = 0; i < 12; i++) {
-      setTimeout(createBall, i * 1000);
-    }
 
-    // 🎵 ปลด mute หลังโหลด
-    window.addEventListener('load', () => {
-      const music = document.getElementById('bg-music');
-      music.muted = false; // ปลด mute เพื่อให้มีเสียง
-      music.play().catch(() => {
-        console.log("ผู้ใช้ต้องคลิกเพื่อเปิดเสียง");
-      });
-    });
-  </script>
-</body>
-</html>
+    for (let i = 0; i < 10; i++) {
+      setTimeout(createBall, i * 
