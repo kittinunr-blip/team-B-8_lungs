@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Profile Page Template" />
+  <title>โปรไฟล์ — ตัวอย่าง</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+</head>
+<body class="antialiased text-slate-800 bg-white dark:bg-slate-900 dark:text-slate-100">
+  <!-- Header -->
+  <header class="border-b border-slate-200 dark:border-slate-800">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <span class="text-lg font-bold">MyProfile</span>
+      <button id="themeToggle" class="px-3 py-1.5 rounded-md border text-sm">Toggle theme</button>
+    </div>
+  </header>
+
+  <!-- Profile Section -->
+  <main>
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+        <img src="https://via.placeholder.com/150" alt="Profile" class="w-32 h-32 rounded-full mx-auto border shadow" />
+        <h1 class="mt-4 text-3xl font-extrabold">ชื่อ นามสกุล</h1>
+        <p class="mt-2 text-slate-600 dark:text-slate-300">ตำแหน่ง / อาชีพ</p>
+        <p class="mt-4 max-w-xl mx-auto text-slate-600 dark:text-slate-300">แนะนำตัวสั้น ๆ เกี่ยวกับคุณ ความสนใจ ประสบการณ์ หรือสิ่งที่คุณกำลังทำอยู่</p>
+
+        <!-- Social Links -->
+        <div class="mt-6 flex justify-center gap-4">
+          <a href="#" class="text-blue-600 hover:underline">Facebook</a>
+          <a href="#" class="text-sky-500 hover:underline">Twitter</a>
+          <a href="#" class="text-gray-800 hover:underline">GitHub</a>
+          <a href="#" class="text-blue-700 hover:underline">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="py-12 bg-slate-50 dark:bg-slate-800">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-center">ทักษะ</h2>
+        <p class="mt-2 text-center text-slate-600 dark:text-slate-300">รวมทักษะหลักและความสามารถที่ถนัด</p>
+        <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-center">
+          <div class="p-4 border rounded-lg">HTML</div>
+          <div class="p-4 border rounded-lg">CSS</div>
+          <div class="p-4 border rounded-lg">JavaScript</div>
+          <div class="p-4 border rounded-lg">React</div>
+          <div class="p-4 border rounded-lg">Node.js</div>
+          <div class="p-4 border rounded-lg">Python</div>
+          <div class="p-4 border rounded-lg">UI/UX</div>
+          <div class="p-4 border rounded-lg">อื่น ๆ</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio / Projects -->
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-center">ผลงาน</h2>
+        <p class="mt-2 text-center text-slate-600 dark:text-slate-300">ตัวอย่างโครงการหรือผลงานที่เคยทำ</p>
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-4 border rounded-lg bg-white dark:bg-slate-900">
+            <img src="https://via.placeholder.com/400x200" alt="Project" class="rounded mb-3" />
+            <h3 class="font-semibold">โครงการ A</h3>
+            <p class="text-sm text-slate-600">รายละเอียดสั้น ๆ ของโครงการ เช่น วัตถุประสงค์ เทคโนโลยีที่ใช้ และผลลัพธ์ที่ได้</p>
+          </div>
+          <div class="p-4 border rounded-lg bg-white dark:bg-slate-900">
+            <img src="https://via.placeholder.com/400x200" alt="Project" class="rounded mb-3" />
+            <h3 class="font-semibold">โครงการ B</h3>
+            <p class="text-sm text-slate-600">รายละเอียดสั้น ๆ ของโครงการ เช่น สิ่งที่เรียนรู้หรือสิ่งที่พัฒนาขึ้นจากการทำงาน</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="py-12 bg-slate-50 dark:bg-slate-800">
+      <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-center">ติดต่อ</h2>
+        <p class="mt-2 text-center text-slate-600 dark:text-slate-300">หากสนใจร่วมงานหรือพูดคุย สามารถส่งข้อความหาได้เลย</p>
+        <form class="mt-6 grid grid-cols-1 gap-4">
+          <input type="text" placeholder="ชื่อ" class="w-full p-3 border rounded" />
+          <input type="email" placeholder="อีเมล" class="w-full p-3 border rounded" />
+          <textarea placeholder="ข้อความ" rows="4" class="w-full p-3 border rounded"></textarea>
+          <div class="text-right">
+            <button type="submit" class="px-5 py-3 bg-indigo-600 text-white rounded">ส่งข้อความ</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 dark:border-slate-800">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-6 text-sm text-center text-slate-600 dark:text-slate-400">
+      © <span id="year"></span> MyProfile
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const themeToggle = document.getElementById('themeToggle');
+    function setTheme(dark) {
+      if (dark) document.documentElement.classList.add('dark');
+      else document.documentElement.classList.remove('dark');
+      localStorage.setItem('site-theme', dark ? 'dark' : 'light');
+    }
+    const saved = localStorage.getItem('site-theme');
+    if (saved) setTheme(saved === 'dark');
+    else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) setTheme(true);
+
+    themeToggle && themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('site-theme', isDark ? 'dark' : 'light');
+    });
+
+    document.querySelector('form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('ขอบคุณสำหรับข้อความ! (ตัวอย่าง)');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
