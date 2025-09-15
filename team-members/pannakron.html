@@ -3,119 +3,168 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello I Am Morphine ✨</title>
+  <title>Pannakron Kongsawat — Profile</title>
   <style>
     body {
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      background: linear-gradient(180deg, #a8e6cf, #dcedc1);
       margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg, #d8f3dc, #b7e4c7, #95d5b2);
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      justify-content: flex-start;
       min-height: 100vh;
-      padding: 30px 15px;
-      color: #1b4332;
-    }
-
-    .card {
-      background: #ffffffcc;
-      border: 2px solid #95d5b2;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(34, 139, 34, 0.25);
-      padding: 25px;
-      max-width: 420px;
-      text-align: center;
-      backdrop-filter: blur(6px);
-    }
-
-    h1 {
-      font-size: 26px;
-      margin-bottom: 15px;
       color: #081c15;
     }
 
-    .frame-img {
-      background: #52b788;
-      border: 5px solid #1b4332;
-      padding: 8px;
-      margin: 15px auto;
-      border-radius: 16px;
-      display: inline-block;
+    .card {
+      background: #ffffffee;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 100, 0, 0.25);
+      max-width: 850px;
+      width: 95%;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      overflow: hidden;
     }
 
-    .frame-img img {
-      max-width: 280px;
-      border-radius: 12px;
-      display: block;
-    }
-
-    .buttons {
-      margin-top: 20px;
-    }
-
-    button {
-      width: 200px;
-      padding: 12px;
-      margin: 10px;
-      font-size: 15px;
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      background-color: #52b788;
+    .left {
+      background: linear-gradient(160deg, #2d6a4f, #40916c);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
       color: #f1faee;
-      cursor: pointer;
-      transition: all 0.25s ease;
     }
 
-    button:hover {
-      background-color: #1b4332;
-      transform: translateY(-2px) scale(1.05);
+    .left img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 6px solid #95d5b2;
+      object-fit: cover;
+      margin-bottom: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .left h2 {
+      margin: 10px 0 0;
+      font-size: 24px;
+    }
+
+    .left p {
+      margin: 6px 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .right {
+      padding: 30px;
+    }
+
+    .right h3 {
+      margin-bottom: 12px;
+      font-size: 20px;
+      color: #1b4332;
+    }
+
+    .chips {
+      margin-bottom: 20px;
+    }
+
+    .chip {
+      display: inline-block;
+      background: #d8f3dc;
+      border: 1.5px solid #95d5b2;
+      color: #1b4332;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+      margin: 5px;
+    }
+
+    .info {
+      background: #f6fff8;
+      border: 1.5px solid #b7e4c7;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .info p {
+      margin: 6px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      background: #52b788;
+      color: #fff;
+      font-weight: bold;
+      padding: 12px 18px;
+      border-radius: 10px;
+      transition: 0.3s;
+      margin: 10px 10px 0 0;
+    }
+
+    .btn:hover {
+      background: #1b4332;
+      transform: translateY(-2px);
     }
 
     footer {
-      margin-top: 25px;
-      font-size: 13px;
+      text-align: center;
+      margin-top: 20px;
       color: #40916c;
+      font-size: 13px;
+    }
+
+    @media(max-width: 720px) {
+      .card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .left {
+        border-radius: 20px 20px 0 0;
+      }
     }
   </style>
 </head>
 <body>
+
   <div class="card">
-    <h1>Hello I Am Morphine ✨</h1>
-
-    <div class="frame-img">
-      <img src="pannakron.jpg" alt="Morphine">
+    <div class="left">
+      <img src="pannakron.jpg" alt="Pannakron">
+      <h2>Pannakron Kongsawat</h2>
+      <p>สมาชิกทีม B-8 Lungs</p>
     </div>
 
-    <div class="buttons">
-      <button onclick="playMusic()">▶️ เล่นเพลง 🎵</button>
-      <button onclick="stopMusic()">⏹️ หยุดเพลง ❌</button>
+    <div class="right">
+      <h3>เกี่ยวกับฉัน</h3>
+      <div class="chips">
+        <span class="chip">Hobby: เล่นเกม</span>
+        <span class="chip">Hobby: อ่านการ์ตูน</span>
+        <span class="chip">Future: Developer</span>
+      </div>
+
+      <div class="info">
+        <p><b>Email:</b> pannakron.k@example.com</p>
+        <p><b>Facebook:</b> pannakron kongsawat</p>
+      </div>
+
+      <div class="info">
+        <p>🎮 เกมที่ชอบ: Wuthering Waves, BlueArchive, Uma Musume Pretty Derby</p>
+        <p>💚 ชอบธรรมชาติ สีเขียว และของหวาน</p>
+      </div>
+
+      <a href="../index.html" class="btn">← กลับหน้า Team</a>
+      <a href="kittinun.html" class="btn">ไปหน้า Kittinun</a>
+      <a href="phuttargue.html" class="btn">ไปหน้า phuttague</a>
     </div>
-
-    <!-- element audio -->
-    <audio id="bg-music" loop>
-      <source src="neymar.mp3" type="audio/mpeg">
-      เบราว์เซอร์ของคุณไม่รองรับการเล่นเสียง
-    </audio>
-
-    <footer>© 2025 Morphine Web Profile • Theme Green</footer>
   </div>
 
-  <script>
-    const music = document.getElementById('bg-music');
+  <footer>© 2025 Team B-8 • Green Theme</footer>
 
-    function playMusic() {
-      music.play().catch(err => {
-        alert("กดอนุญาตให้เล่นเพลงในเบราว์เซอร์ก่อนนะครับ 🎵");
-        console.error(err);
-      });
-    }
-
-    function stopMusic() {
-      music.pause();
-      music.currentTime = 0;
-    }
-  </script>
 </body>
 </html>
