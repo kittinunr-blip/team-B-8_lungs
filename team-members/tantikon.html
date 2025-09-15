@@ -8,15 +8,26 @@
     body {
       margin: 0;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #000000, #1a1a1a);
+      background: url("https://wallpapercave.com/wp/wp7418597.jpg") no-repeat center center fixed;
+      background-size: cover;
       color: #fff;
     }
 
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.75);
+      z-index: -1;
+    }
+
     header {
-      background: #b91c1c;
+      background: rgba(185, 28, 28, 0.9);
       padding: 20px 40px;
       text-align: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+      animation: slideDown 1.2s ease;
     }
 
     header h1 {
@@ -24,6 +35,7 @@
       font-size: 2.5rem;
       font-weight: bold;
       letter-spacing: 2px;
+      animation: glow 2s infinite alternate;
     }
 
     header p {
@@ -42,18 +54,25 @@
       display: flex;
       align-items: center;
       gap: 30px;
-      background: #111;
+      background: rgba(17, 17, 17, 0.9);
       border-left: 5px solid #b91c1c;
       padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 0 15px rgba(185, 28, 28, 0.5);
+      box-shadow: 0 0 15px rgba(185, 28, 28, 0.7);
+      animation: fadeIn 1.5s ease;
     }
 
-    .profile img {
+    .profile img.avatar {
       width: 140px;
       height: 140px;
       border-radius: 50%;
       border: 4px solid #b91c1c;
+    }
+
+    .arsenal-logo {
+      width: 80px;
+      height: auto;
+      animation: spin 10s linear infinite;
     }
 
     .profile-info h2 {
@@ -71,8 +90,9 @@
       margin-top: 30px;
       padding: 20px;
       border-radius: 10px;
-      background: #1a1a1a;
-      box-shadow: 0 0 10px rgba(185,28,28,0.4);
+      background: rgba(26, 26, 26, 0.9);
+      box-shadow: 0 0 10px rgba(185,28,28,0.6);
+      animation: fadeInUp 1.2s ease;
     }
 
     .section h3 {
@@ -92,7 +112,7 @@
       border-bottom: 1px solid #333;
     }
 
-    .contact a {
+    .contact a, .music-btn {
       display: inline-block;
       margin: 10px 10px 0 0;
       padding: 10px 20px;
@@ -102,9 +122,10 @@
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
+      cursor: pointer;
     }
 
-    .contact a:hover {
+    .contact a:hover, .music-btn:hover {
       background: #dc2626;
     }
 
@@ -113,8 +134,52 @@
       padding: 15px;
       margin-top: 30px;
       font-size: 0.9rem;
-      color: #9ca3af;
+      color: #d1d5db;
       border-top: 1px solid #333;
+      background: rgba(0,0,0,0.6);
+    }
+
+    /* Ronaldo Zoo Style */
+    .ronaldo {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .ronaldo img {
+      width: 250px;
+      animation: bounce 2s infinite ease-in-out;
+      filter: drop-shadow(0 0 15px #ff0000);
+    }
+
+    /* Animation */
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff0000; }
+      to { text-shadow: 0 0 20px #fff, 0 0 30px #ff0000; }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
     }
   </style>
 </head>
@@ -126,13 +191,17 @@
 
   <div class="container">
     <div class="profile">
-      <!-- เปลี่ยนลิงก์ภาพเป็นรูปจริงของคุณ -->
+      <!-- รูปโปรไฟล์ -->
       <img class="avatar" src="images/tantikon.jpg" alt="TONTIKORN CHUMJAI">
       <div class="profile-info">
         <h2>TONTIKORN CHUMJAI</h2>
         <p>ชอบสีแดง ดำ และขาว</p>
         <p>งานอดิเรก: เล่นฟุตบอล</p>
+        <p>⚽ ชอบทีม Arsenal</p>
+        <p>🎵 ชอบฟังเพลง: My Name Is Brian</p>
       </div>
+      <!-- โลโก้ Arsenal -->
+      <img class="arsenal-logo" src="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg" alt="Arsenal Logo">
     </div>
 
     <div class="section">
@@ -143,20 +212,48 @@
         <li>อายุ: 21 ปี</li>
         <li>ชอบสี: แดง, ดำ, ขาว</li>
         <li>งานอดิเรก: เล่นฟุตบอล</li>
+        <li>ทีมที่ชอบ: Arsenal</li>
+        <li>เพลงที่ชอบ: My Name Is Brian</li>
       </ul>
     </div>
 
     <div class="section contact">
       <h3>ติดต่อ</h3>
-      <!-- ปุ่มอีเมล -->
       <a href="mailto:tontikorn758@gmail.com">📧 Email: tontikorn758@gmail.com</a>
-      <!-- ปุ่มเฟสบุ๊ก (คุณอาจต้องใส่ลิงก์จริงของโปรไฟล์ FB) -->
       <a href="https://www.facebook.com/search/top?q=Tonti%20Korn" target="_blank">📘 Facebook: Tonti Korn</a>
+    </div>
+
+    <!-- Music Player -->
+    <div class="section">
+      <h3>🎶 Music Player</h3>
+      <button class="music-btn" onclick="toggleMusic()">▶ Play / ⏸ Pause</button>
+      <audio id="mySong" src="music/mynameisbrian.mp3"></audio>
+      <p style="color:#fca5a5; font-size:0.9rem;">เพลง: My Name Is Brian</p>
+    </div>
+
+    <!-- Ronaldo Zoo -->
+    <div class="ronaldo">
+      <h3>🔥 Ronaldo Zoo Celebration 🔥</h3>
+      <img src="https://media.tenor.com/2roX3uxz_68AAAAM/cristiano-ronaldo.gif" alt="Ronaldo Zoo">
     </div>
   </div>
 
   <footer>
-    © 2025 Profile by Tontikorn
+    © 2025 Profile by Tontikorn ⚽🔥
   </footer>
+
+  <script>
+    const song = document.getElementById("mySong");
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        song.pause();
+      } else {
+        song.play();
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
 </body>
 </html>
