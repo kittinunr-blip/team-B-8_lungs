@@ -223,7 +223,10 @@
     <source src="music/neymar.mp3" type="audio/mpeg">
     เบราว์เซอร์ของคุณไม่รองรับการเล่นเพลง
   </audio>
-
+<div style="margin-top:15px; text-align:center;">
+  <button id="playBtn" class="btn">▶️ เล่นเพลง</button>
+  <button id="stopBtn" class="btn">⏹️ หยุดเพลง</button>
+</div>
   <script>
     // ลูกบอลตก
     function createBall() {
@@ -244,12 +247,27 @@
     for (let i = 0; i < 10; i++) {
       setTimeout(createBall, i * 
 
-      setInterval(() => createBgSakura(), 4000);
-window.addEventListener('load', () => {
-      const music = document.getElementById('bg-music');
-      music.muted = false; // ปลด mute เพื่อให้มีเสียง
-      music.play().catch(() => {
-        console.log("ผู้ใช้ต้องคลิกเพื่อเปิดเสียง");
-      });
+    const music = document.getElementById('bg-music');
+  const playBtn = document.getElementById('playBtn');
+  const stopBtn = document.getElementById('stopBtn');
+
+  // ปลด mute ตอนโหลด
+  window.addEventListener('load', () => {
+    music.muted = false;
+    music.play().catch(() => {
+      console.log("ผู้ใช้อาจต้องคลิกปุ่มเพื่อเริ่มเสียง");
     });
+  });
+
+  // ▶️ เล่น
+  playBtn.addEventListener('click', () => {
+    music.muted = false;
+    music.play();
+  });
+
+  // ⏹️ หยุด
+  stopBtn.addEventListener('click', () => {
+    music.pause();
+    music.currentTime = 0; // รีเซ็ตไปต้นเพลง
+  });
     </script>
