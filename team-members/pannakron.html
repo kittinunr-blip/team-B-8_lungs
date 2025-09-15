@@ -61,12 +61,13 @@
   <h1>Hello I Am Morphine ✨</h1>
 
   <div class="frame-img">
-    <img src="morphine.png" alt="Morphine">
+    <img src="pannakron.jpg" alt="Morphine">
   </div>
 
   <button onclick="playMusic()">▶️ เล่นเพลง 🎵</button>
   <button onclick="stopMusic()">⏹️ หยุดเพลง ❌</button>
 
+  <!-- element audio -->
   <audio id="bg-music" loop>
     <source src="neymar.mp3" type="audio/mpeg">
     เบราว์เซอร์ของคุณไม่รองรับการเล่นเสียง
@@ -76,12 +77,15 @@
     const music = document.getElementById('bg-music');
 
     function playMusic() {
-      music.play();
+      music.play().catch(err => {
+        alert("กดอนุญาตให้เล่นเพลงในเบราว์เซอร์ก่อนนะครับ 🎵");
+        console.error(err);
+      });
     }
 
     function stopMusic() {
       music.pause();
-      music.currentTime = 0; // กลับไปต้นเพลง
+      music.currentTime = 0; // รีเซ็ตไปต้นเพลง
     }
   </script>
 </body>
