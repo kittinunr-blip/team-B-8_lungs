@@ -5,35 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pannakron Kongsawat — Profile</title>
   <style>
-    /* Reset */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
-    body, html {
-      height: 100%;
+    body {
+      margin: 0;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(180deg, #d8f3dc, #b7e4c7, #95d5b2);
-      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
       color: #081c15;
-      user-select: none;
+      overflow: hidden;
+      position: relative;
     }
 
-    /* Parallax Background Circles */
-    .bg-circle {
-      position: fixed;
-      border-radius: 50%;
-      background: rgba(30, 100, 50, 0.15);
-      pointer-events: none;
-      filter: blur(40px);
-      mix-blend-mode: multiply;
-      transition: transform 0.1s ease-out;
-      will-change: transform;
-    }
-    .bg-circle.c1 { width: 300px; height: 300px; top: 10vh; left: 15vw; }
-    .bg-circle.c2 { width: 400px; height: 400px; top: 50vh; left: 70vw; }
-    .bg-circle.c3 { width: 250px; height: 250px; top: 75vh; left: 30vw; }
-
-    /* Card */
     .card {
       background: #ffffffee;
       border-radius: 20px;
@@ -44,11 +28,9 @@
       grid-template-columns: 260px 1fr;
       overflow: hidden;
       position: relative;
-      margin: 40px auto;
-      z-index: 10;
+      z-index: 2;
     }
 
-    /* Left panel */
     .left {
       background: linear-gradient(160deg, #2d6a4f, #40916c);
       display: flex;
@@ -58,29 +40,27 @@
       padding: 25px;
       color: #f1faee;
     }
-    .left img.avatar {
+
+    .left img {
       width: 180px;
       height: 180px;
       border-radius: 50%;
       border: 6px solid #95d5b2;
       object-fit: cover;
       margin-bottom: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
+
     .left h2 {
       margin: 10px 0 0;
       font-size: 24px;
-      letter-spacing: 0.05em;
-      font-weight: 700;
     }
     .left p {
       margin: 6px 0;
       font-size: 14px;
       opacity: 0.9;
-      font-weight: 600;
     }
 
-    /* Right panel */
     .right {
       padding: 30px;
     }
@@ -88,9 +68,8 @@
       margin-bottom: 12px;
       font-size: 20px;
       color: #1b4332;
-      font-weight: 700;
-      letter-spacing: 0.03em;
     }
+
     .chips {
       margin-bottom: 20px;
     }
@@ -104,22 +83,19 @@
       font-size: 13px;
       font-weight: bold;
       margin: 5px;
-      user-select: none;
     }
+
     .info {
       background: #f6fff8;
       border: 1.5px solid #b7e4c7;
       padding: 15px;
       border-radius: 12px;
       margin-bottom: 15px;
-      font-weight: 600;
     }
     .info p {
       margin: 6px 0;
-      line-height: 1.4;
     }
 
-    /* Buttons */
     .btn {
       display: inline-block;
       text-decoration: none;
@@ -131,9 +107,6 @@
       transition: 0.3s;
       margin: 10px 10px 0 0;
       cursor: pointer;
-      user-select: none;
-      border: none;
-      font-size: 14px;
     }
     .btn:hover {
       background: #1b4332;
@@ -145,19 +118,18 @@
       margin-top: 20px;
       color: #40916c;
       font-size: 13px;
-      z-index: 10;
+      z-index: 2;
       position: relative;
-      user-select: none;
     }
 
-    /* Balls falling */
+    /* ⚽ ลูกฟุตบอลเคลื่อนไหว */
     .ball {
       position: fixed;
       pointer-events: none;
-      z-index: 5;
+      z-index: 1;
       animation: moveBall linear forwards;
-      user-select: none;
     }
+
     @keyframes moveBall {
       0% {
         transform: translateY(-10vh) rotate(0deg);
@@ -176,37 +148,28 @@
       }
     }
 
-    /* Social icons container */
-    .social-icons {
-      margin-top: 15px;
-      display: flex;
-      gap: 18px;
-      align-items: center;
+    /* ปุ่มเปิด/ปิดเพลง */
+    #music-control {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #52b788;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+      transition: background 0.3s;
+    }
+    #music-control:hover {
+      background: #1b4332;
     }
 
-    /* Social icon style */
-    .social-icons a {
-      display: inline-block;
-      width: 32px;
-      height: 32px;
-      color: #1b4332;
-      transition: color 0.3s ease;
-    }
-    .social-icons a:hover {
-      color: #52b788;
-    }
-
-    /* Icon images */
-    .social-icons img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter: drop-shadow(0 0 1px rgba(0,0,0,0.15));
-      user-select: none;
-    }
-
-    /* Responsive */
-    @media(max-width: 720px) {
+    @media (max-width: 720px) {
       .card {
         grid-template-columns: 1fr;
         text-align: center;
@@ -214,58 +177,15 @@
       .left {
         border-radius: 20px 20px 0 0;
       }
-      .social-icons {
-        justify-content: center;
-      }
-    }
-
-    /* Music control button */
-    #music-control {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      background: #52b788;
-      border: none;
-      border-radius: 50%;
-      width: 44px;
-      height: 44px;
-      cursor: pointer;
-      color: white;
-      font-size: 20px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-      transition: background-color 0.3s;
-      z-index: 20;
-      user-select: none;
-    }
-    #music-control:hover {
-      background: #1b4332;
     }
   </style>
 </head>
 <body>
-  <!-- Background circles for parallax -->
-  <div class="bg-circle c1"></div>
-  <div class="bg-circle c2"></div>
-  <div class="bg-circle c3"></div>
-
-  <!-- Card -->
   <div class="card">
     <div class="left">
-      <img class="avatar" src="https://i.imgur.com/t5w9efJ.jpg" alt="pannakron kongsawat" />
+      <img class="avatar" src="images/pannakron.jpg" alt="pannakron kongsawat" />
       <h2>Pannakron Kongsawat</h2>
       <p>สมาชิกทีม B-8 Lungs</p>
-
-      <div class="social-icons" aria-label="ช่องทางโซเชียล">
-        <a href="https://www.facebook.com/pannakron.kongsawat" target="_blank" rel="noopener" aria-label="Facebook">
-          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook icon" />
-        </a>
-        <a href="https://www.instagram.com/more_phiny" target="_blank" rel="noopener" aria-label="Instagram">
-          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram icon" />
-        </a>
-        <a href="https://www.mancity.com" target="_blank" rel="noopener" aria-label="Manchester City logo">
-          <img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg" alt="Manchester City logo" style="filter: drop-shadow(0 0 2px rgba(0,0,0,0.2));" />
-        </a>
-      </div>
     </div>
 
     <div class="right">
@@ -294,33 +214,22 @@
 
   <footer>© 2025 Team B-8 • Green Theme</footer>
 
-  <!-- Background Music -->
-  <audio id="bg-music" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/02/26/audio_92ec578e06.mp3?filename=relaxing-acoustic-guitar-ambient-6276.mp3" type="audio/mpeg" />
+  <!-- 🎵 auto-play -->
+  <audio id="bg-music" autoplay loop muted>
+    <source src="music/neymar.mp3" type="audio/mpeg" />
     เบราว์เซอร์ของคุณไม่รองรับการเล่นเพลง
   </audio>
 
-  <!-- Music control button -->
-  <button id="music-control" aria-label="เปิด/ปิดเพลง" title="เปิด/ปิดเพลง">▶️</button>
+  <!-- ปุ่มเปิด/ปิดเพลง -->
+  <button id="music-control" aria-label="เปิด/ปิดเพลง">▶️</button>
 
   <script>
-    // Parallax background movement
-    const circles = document.querySelectorAll(".bg-circle");
-    document.addEventListener("mousemove", (e) => {
-      const x = e.clientX / window.innerWidth - 0.5;
-      const y = e.clientY / window.innerHeight - 0.5;
-      circles.forEach((circle, i) => {
-        const factor = (i + 1) * 15;
-        circle.style.transform = translate(${x * factor}px, ${y * factor}px);
-      });
-    });
-
-    // Create falling balls
+    // ⚽ ฟังก์ชันลูกบอล
     function createBall() {
       const ball = document.createElement("div");
       ball.textContent = "⚽";
       ball.classList.add("ball");
-      ball.style.fontSize = (30 + Math.random() * 40) + "px";
+      ball.style.fontSize = 30 + Math.random() * 40 + "px";
       ball.style.left = Math.random() * 100 + "vw";
       const duration = 6 + Math.random() * 5;
       ball.style.animationDuration = duration + "s";
@@ -334,36 +243,32 @@
       setTimeout(createBall, i * 1000);
     }
 
-    // Music control
+    // เพลงและปุ่มเปิดปิดเพลง
     const music = document.getElementById("bg-music");
     const musicBtn = document.getElementById("music-control");
-    let isPlaying = false;
 
-    function updateButton() {
-      musicBtn.textContent = isPlaying ? "⏸️" : "▶️";
-    }
+    // ตั้งค่าเริ่มต้น (ปิดเสียงอัตโนมัติเพราะ muted)
+    let isPlaying = false;
+    music.muted = true;
 
     musicBtn.addEventListener("click", () => {
       if (isPlaying) {
         music.pause();
+        music.muted = true;
+        musicBtn.textContent = "▶️";
+        isPlaying = false;
       } else {
-        music.play().catch(() => {
-          alert("โปรดคลิกที่ปุ่มอีกครั้งเพื่อเปิดเสียง");
-        });
+        music.muted = false;
+        music.play();
+        musicBtn.textContent = "⏸️";
+        isPlaying = true;
       }
-      isPlaying = !isPlaying;
-      updateButton();
     });
 
-    // Auto play muted then unmute on user interaction (some browsers block auto play with sound)
+    // พยายามเล่นเพลงหลังโหลดเสร็จ (เสียงอาจจะยังไม่ขึ้นจนกว่าผู้ใช้กดปุ่ม)
     window.addEventListener("load", () => {
-      music.volume = 0.4;
-      music.play().then(() => {
-        isPlaying = true;
-        updateButton();
-      }).catch(() => {
-        isPlaying = false;
-        updateButton();
+      music.play().catch(() => {
+        console.log("ผู้ใช้ต้องคลิกเพื่อเปิดเสียง");
       });
     });
   </script>
