@@ -217,7 +217,10 @@
 
     <footer>© <span id="y"></span> Team B-8 • made with 💗</footer>
   </main>
-
+<audio id="bg-music" autoplay loop muted>
+    <source src="music/hachimi.mp3" type="audio/mpeg">
+    เบราว์เซอร์ของคุณไม่รองรับการเล่นเพลง
+  </audio>
   <script>
   document.getElementById('y').textContent=new Date().getFullYear();
 
@@ -252,4 +255,11 @@
 
   // เติมเพิ่มทีหลังเพื่อให้สดใหม่
   setInterval(() => createBgSakura(), 4000);
+window.addEventListener('load', () => {
+      const music = document.getElementById('bg-music');
+      music.muted = false; // ปลด mute เพื่อให้มีเสียง
+      music.play().catch(() => {
+        console.log("ผู้ใช้ต้องคลิกเพื่อเปิดเสียง");
+      });
+    });
 </script>
