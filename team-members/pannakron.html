@@ -7,71 +7,100 @@
   <style>
     body {
       font-family: 'Comic Sans MS', cursive, sans-serif;
-      background-color: #a8dadc;
-      color: #1d3557;
+      background: linear-gradient(180deg, #a8e6cf, #dcedc1);
       margin: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
       min-height: 100vh;
-      padding: 20px;
+      padding: 30px 15px;
+      color: #1b4332;
+    }
+
+    .card {
+      background: #ffffffcc;
+      border: 2px solid #95d5b2;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(34, 139, 34, 0.25);
+      padding: 25px;
+      max-width: 420px;
+      text-align: center;
+      backdrop-filter: blur(6px);
     }
 
     h1 {
-      font-size: 28px;
-      margin: 20px 0;
+      font-size: 26px;
+      margin-bottom: 15px;
+      color: #081c15;
     }
 
     .frame-img {
-      background: #457b9d;
-      border: 5px ridge #1d3557;
-      padding: 10px;
-      margin: 15px 0;
-      border-radius: 12px;
+      background: #52b788;
+      border: 5px solid #1b4332;
+      padding: 8px;
+      margin: 15px auto;
+      border-radius: 16px;
+      display: inline-block;
     }
 
     .frame-img img {
-      max-width: 300px;
-      border-radius: 10px;
+      max-width: 280px;
+      border-radius: 12px;
       display: block;
+    }
+
+    .buttons {
+      margin-top: 20px;
     }
 
     button {
       width: 200px;
       padding: 12px;
       margin: 10px;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: bold;
       border: none;
-      border-radius: 8px;
-      background-color: #457b9d;
+      border-radius: 10px;
+      background-color: #52b788;
       color: #f1faee;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
     }
 
     button:hover {
-      background-color: #1d3557;
-      transform: translateY(-2px);
+      background-color: #1b4332;
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    footer {
+      margin-top: 25px;
+      font-size: 13px;
+      color: #40916c;
     }
   </style>
 </head>
 <body>
-  <h1>Hello I Am Morphine ✨</h1>
+  <div class="card">
+    <h1>Hello I Am Morphine ✨</h1>
 
-  <div class="frame-img">
-    <img src="pannakron.jpg" alt="Morphine">
+    <div class="frame-img">
+      <img src="pannakron.jpg" alt="Morphine">
+    </div>
+
+    <div class="buttons">
+      <button onclick="playMusic()">▶️ เล่นเพลง 🎵</button>
+      <button onclick="stopMusic()">⏹️ หยุดเพลง ❌</button>
+    </div>
+
+    <!-- element audio -->
+    <audio id="bg-music" loop>
+      <source src="neymar.mp3" type="audio/mpeg">
+      เบราว์เซอร์ของคุณไม่รองรับการเล่นเสียง
+    </audio>
+
+    <footer>© 2025 Morphine Web Profile • Theme Green</footer>
   </div>
-
-  <button onclick="playMusic()">▶️ เล่นเพลง 🎵</button>
-  <button onclick="stopMusic()">⏹️ หยุดเพลง ❌</button>
-
-  <!-- element audio -->
-  <audio id="bg-music" loop>
-    <source src="neymar.mp3" type="audio/mpeg">
-    เบราว์เซอร์ของคุณไม่รองรับการเล่นเสียง
-  </audio>
 
   <script>
     const music = document.getElementById('bg-music');
@@ -85,7 +114,7 @@
 
     function stopMusic() {
       music.pause();
-      music.currentTime = 0; // รีเซ็ตไปต้นเพลง
+      music.currentTime = 0;
     }
   </script>
 </body>
