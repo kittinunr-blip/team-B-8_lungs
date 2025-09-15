@@ -1,87 +1,88 @@
-import tkinter as tk
-from tkinter import messagebox
-import pygame
-import os
-from PIL import Image, ImageTk
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello I Am Morphine ✨</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #a8dadc;
+      color: #1d3557;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-# -----------------------------
-# ฟังก์ชันจัดการเพลง
-# -----------------------------
-def play_music():
-    music_path = "neymar.mp3"
-    if os.path.exists(music_path):
-        pygame.mixer.init()
-        pygame.mixer.music.load(music_path)
-        pygame.mixer.music.play(-1)
-    else:
-        messagebox.showerror("Error", "ไม่พบไฟล์เพลง neymar.mp3")
+    h1 {
+      font-size: 28px;
+      margin: 20px 0;
+    }
 
-def stop_music():
-    if pygame.mixer.get_init():
-        pygame.mixer.music.stop()
+    .frame-img {
+      background: #457b9d;
+      border: 5px ridge #1d3557;
+      padding: 10px;
+      margin: 15px 0;
+      border-radius: 12px;
+    }
 
-# -----------------------------
-# สร้างหน้าต่างหลัก
-# -----------------------------
-root = tk.Tk()
-root.title("เกี่ยวกับฉัน")
-root.geometry("400x600")
-root.configure(bg="#a8dadc")  # โทนสีฟ้าอ่อน
+    .frame-img img {
+      max-width: 300px;
+      border-radius: 10px;
+      display: block;
+    }
 
-# -----------------------------
-# ข้อความทักทาย
-# -----------------------------
-label = tk.Label(root, text="Hello I Am Morphine ✨", font=("Comic Sans MS", 22, "bold"),
-                 fg="#1d3557", bg="#a8dadc")
-label.pack(pady=15)
+    button {
+      width: 200px;
+      padding: 12px;
+      margin: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      background-color: #457b9d;
+      color: #f1faee;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
 
-# -----------------------------
-# กรอบสำหรับรูป
-# -----------------------------
-frame_img = tk.Frame(root, bg="#457b9d", bd=5, relief=tk.RIDGE)
-frame_img.pack(pady=10)
+    button:hover {
+      background-color: #1d3557;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <h1>Hello I Am Morphine ✨</h1>
 
-# โหลดรูป morphine.png
-image_path = "morphine.png"
-if os.path.exists(image_path):
-    try:
-        img_open = Image.open(image_path)
-        img_open = img_open.resize((300, 300))
-        img = ImageTk.PhotoImage(img_open)
-        panel = tk.Label(frame_img, image=img, bg="#457b9d")
-        panel.image = img
-        panel.pack(padx=5, pady=5)
-    except Exception as e:
-        tk.Label(frame_img, text=f"โหลดรูปไม่ได้: {e}", fg="red", bg="#457b9d").pack(pady=10)
-else:
-    tk.Label(frame_img, text="ไม่พบไฟล์ morphine.png", fg="red", bg="#457b9d").pack(pady=10)
+  <div class="frame-img">
+    <img src="morphine.png" alt="Morphine">
+  </div>
 
-# -----------------------------
-# ฟังก์ชันตกแต่งปุ่ม
-# -----------------------------
-def on_enter(e):
-    e.widget['bg'] = '#1d3557'
-    e.widget['fg'] = '#f1faee'
+  <button onclick="playMusic()">▶️ เล่นเพลง 🎵</button>
+  <button onclick="stopMusic()">⏹️ หยุดเพลง ❌</button>
 
-def on_leave(e):
-    e.widget['bg'] = '#457b9d'
-    e.widget['fg'] = '#f1faee'
+  <audio id="bg-music" loop>
+    <source src="neymar.mp3" type="audio/mpeg">
+    เบราว์เซอร์ของคุณไม่รองรับการเล่นเสียง
+  </audio>
 
-btn_play = tk.Button(root, text="▶️ เล่นเพลง 🎵", command=play_music,
-                     width=20, height=2, bg="#457b9d", fg="#f1faee",
-                     font=("Arial", 12, "bold"), bd=0)
-btn_play.pack(pady=10)
-btn_play.bind("<Enter>", on_enter)
-btn_play.bind("<Leave>", on_leave)
+  <script>
+    const music = document.getElementById('bg-music');
 
-btn_stop = tk.Button(root, text="⏹️ หยุดเพลง ❌", command=stop_music,
-                     width=20, height=2, bg="#457b9d", fg="#f1faee",
-                     font=("Arial", 12, "bold"), bd=0)
-btn_stop.pack(pady=5)
-btn_stop.bind("<Enter>", on_enter)
-btn_stop.bind("<Leave>", on_leave)
+    function playMusic() {
+      music.play();
+    }
 
-# -----------------------------
-# รันโปรแกรม
-# -----------------------------
-root.mainloop()
+    function stopMusic() {
+      music.pause();
+      music.currentTime = 0; // กลับไปต้นเพลง
+    }
+  </script>
+</body>
+</html>
