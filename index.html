@@ -8,104 +8,137 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --bg: #0b1020;
+      --bg-2:#0e1429;
       --text: #e8ecf3;
       --muted: #a8b3cf;
       --brand: #5cc8ff;
       --brand-2:#7d7bff;
       --ring: rgba(124, 207, 255, 0.45);
-      --shadow: 0 10px 30px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.04) inset;
+      --shadow: 0 12px 38px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.04) inset;
       --radius: 16px;
+      --card-bg: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.025));
+      --glass: rgba(10,14,30,.55);
     }
 
     *{box-sizing:border-box}
-    html,body{margin:0; height:100%}
+    html,body{margin:0;height:100%}
     body{
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
-      background: radial-gradient(1200px 700px at 10% -10%, rgba(124,123,255,.18), transparent 60%),
-                  radial-gradient(900px 600px at 120% 20%, rgba(92,200,255,.18), transparent 60%),
-                  var(--bg);
       color: var(--text);
-      display:flex; flex-direction:column;
+      background:
+        radial-gradient(1200px 700px at -5% -10%, rgba(124,123,255,.15), transparent 60%),
+        radial-gradient(900px 600px at 120% 0%, rgba(92,200,255,.13), transparent 60%),
+        linear-gradient(180deg,var(--bg),var(--bg-2));
       min-height:100vh;
+      display:flex;
+      flex-direction:column;
     }
 
-    .nav{position: sticky; top: 0; z-index: 50; display:flex; align-items:center; justify-content:space-between; padding: 14px 22px; backdrop-filter: blur(10px); background: rgba(8,12,24,.55); border-bottom: 1px solid rgba(255,255,255,.06);}
-    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
-    .logo{width: 36px; height: 36px; border-radius:10px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: 0 6px 18px rgba(124,123,255,.35);}
+    /* ── Top bar ───────────────────────────────────────────── */
+    .nav{
+      position: sticky; top: 0; z-index: 50;
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 22px;
+      backdrop-filter: blur(12px);
+      background: color-mix(in oklab, var(--glass) 82%, transparent);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px}
+    .logo{width: 36px; height: 36px; border-radius:10px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: 0 8px 22px rgba(124,123,255,.35);}
     .nav a{color:var(--muted); text-decoration:none; font-weight:600}
     .nav a:hover{color:var(--text)}
 
-    .hero{padding: 64px 20px 28px; text-align:center; max-width: 980px; margin: 0 auto;}
-    .title{font-size: clamp(28px, 4.5vw, 44px); margin: 6px 0 10px; font-weight:800}
-    .subtitle{color:var(--muted); font-size: clamp(14px, 2.1vw, 18px); line-height:1.6}
+    /* ── Hero ─────────────────────────────────────────────── */
+    .hero{padding: 64px 20px 10px; text-align:center; max-width: 980px; margin: 0 auto;}
+    .title{font-size: clamp(28px, 4.5vw, 44px); margin: 6px 0 12px; font-weight:800}
+    .title .grad{
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      filter: drop-shadow(0 6px 18px rgba(124,123,255,.25));
+    }
+    .subtitle{color:var(--muted); font-size: clamp(14px, 2.1vw, 18px); line-height:1.65}
 
-    /* LIST (no search) */
-    .section{padding: 10px 16px 70px}
-    .list {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* แบ่งเป็นตาราง */
-  gap: 20px;
-}
+    /* ── Grid ─────────────────────────────────────────────── */
+    .section{padding: 24px 16px 80px}
+    .list{
+      max-width: 1150px;
+      margin: 0 auto;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
+    }
 
-.card {
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.02));
-  padding: 20px;
-  border: 1px solid rgba(255,255,255,.07);
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-direction: column;   /* วางจากบนลงล่าง */
-  align-items: center;      /* จัดกลาง */
-  justify-content: center;
-  text-align: center;
-  height: 220px;            /* สูงเท่ากัน */
-  transition: transform .2s ease, border-color .2s ease;
-}
-.card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(124,123,255,.45);
-}
+    /* ── Card ─────────────────────────────────────────────── */
+    .card{
+      border-radius: var(--radius);
+      background: var(--card-bg);
+      padding: 20px 18px 18px;
+      border: 1px solid rgba(255,255,255,.07);
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column; align-items:center;
+      text-align:center; min-height: 250px;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+      position: relative;
+      isolation: isolate;
+    }
+    .card:hover{
+      transform: translateY(-6px);
+      border-color: rgba(124,123,255,.45);
+      box-shadow: 0 18px 44px rgba(0,0,0,.5), 0 0 0 1px rgba(124,123,255,.25) inset;
+    }
 
-.avatar {
-  width: 100px;    /* ขยายจาก 56 → 100 */
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 12px;
-}
+    .avatar-wrap{
+      position: relative; margin-bottom: 12px;
+    }
+    .ring{
+      position:absolute; inset:-3px; border-radius:999px;
+      background: conic-gradient(from 140deg, var(--brand), var(--brand-2), var(--brand), var(--brand-2));
+      filter: blur(12px); opacity:.45; z-index:-1;
+      transition: opacity .25s ease;
+    }
+    .card:hover .ring{opacity:.75}
 
-.card h3 {
-  margin: 0 0 6px;
-  font-size: 18px;
-}
+    .avatar{
+      width: 104px; height: 104px; border-radius: 50%;
+      object-fit: cover; display:block;
+      border: 3px solid color-mix(in oklab, var(--brand) 55%, #ffffff 45%);
+      background:#0f162c;
+    }
 
-.card p {
-  margin: 0 0 10px;
-  color: var(--muted);
-  font-size: 14px;
-}
+    .card h3{margin: 6px 0 4px; font-size: 18px; font-weight:800; letter-spacing:.1px}
+    .card p{margin: 0 0 14px; color: var(--muted); font-size: 14px}
 
-.card a {
-  text-decoration: none;
-  font-weight: 700;
-  color: var(--brand);
-}
+    .open{
+      appearance:none; border:none; cursor:pointer; text-decoration:none;
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 10px 14px; border-radius: 10px; font-weight:800;
+      color:#0c1326; background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: 0 10px 28px rgba(124,123,255,.35);
+      transition: transform .15s ease, filter .2s ease;
+    }
+    .open:hover{ transform: translateY(-1px); filter: brightness(1.05) }
+    .open:active{ transform: translateY(0) scale(.98) }
 
+    /* ── Footer ───────────────────────────────────────────── */
+    footer{
+      margin-top:auto; padding: 28px 16px; color: var(--muted); text-align:center;
+      border-top:1px solid rgba(255,255,255,.06)
+    }
 
-    .row{display:flex; flex-wrap:wrap; gap:14px}
-
-    footer{margin-top:auto; padding: 28px 16px; color: var(--muted); text-align:center; border-top:1px solid rgba(255,255,255,.06)}
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;}
+    /* ── Accessibility ────────────────────────────────────── */
     :focus-visible{ outline: 3px solid var(--brand); outline-offset:3px }
+    @media (prefers-reduced-motion: reduce){
+      *{ animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+    }
   </style>
 </head>
 <body>
-  <header class="nav" role="navigation">
+  <!-- Top bar -->
+  <header class="nav" role="navigation" aria-label="Primary">
     <div class="brand" aria-label="Site brand">
       <div class="logo" aria-hidden="true"></div>
       <span>Team B-8 Lungs</span>
@@ -117,69 +150,79 @@
     </nav>
   </header>
 
+  <!-- Hero -->
   <section class="hero">
-    <h1 class="title">Welcome to <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">Team B-8 Lungs</span></h1>
-    
+    <h1 class="title">Welcome to <span class="grad">Team B-8 Lungs</span></h1>
+    <p class="subtitle">Our tiny directory of teammates — clean, fast and delightful.</p>
   </section>
 
+  <!-- Members -->
   <section class="section" id="members" aria-label="Team members">
     <div class="list" id="memberList">
+      <!-- 1 -->
       <article class="card" data-name="kittinun rattanasuphannawet">
-        <img class="avatar" src="team-members/images/kittinun.jpg" alt="Kittinun Rattanasuphannawet">
-
-        <div>
-          <h3>Kittinun Rattanasuphannawet</h3>
-          <p>Web • Embedded • Controls</p>
+        <div class="avatar-wrap">
+          <span class="ring" aria-hidden="true"></span>
+          <img class="avatar" loading="lazy" src="team-members/images/kittinun.jpg" alt="Kittinun Rattanasuphannawet">
         </div>
-        <a href="team-members/kittinun.html">Open</a>
+        <h3>Kittinun Rattanasuphannawet</h3>
+        <p>Web • Embedded • Controls</p>
+        <a class="open" href="team-members/kittinun.html" aria-label="Open Kittinun profile">Open</a>
       </article>
 
+      <!-- 2 -->
       <article class="card" data-name="kitinan kantakad">
-        <img class="avatar" src="team-members/images/kitinan.jpg" alt="kitinan kantakad">
-        <div>
-          <h3>Kitinan Kantakad</h3>
-          <p>Time Master</p>
+        <div class="avatar-wrap">
+          <span class="ring" aria-hidden="true"></span>
+          <img class="avatar" loading="lazy" src="team-members/images/kitinan.jpg" alt="Kitinan Kantakad">
         </div>
-        <a href="team-members/kitinan.html">Open</a>
+        <h3>Kitinan Kantakad</h3>
+        <p>Time Master</p>
+        <a class="open" href="team-members/kitinan.html" aria-label="Open Kitinan profile">Open</a>
       </article>
 
+      <!-- 3 -->
       <article class="card" data-name="pannakron kongsawat">
-        <img class="avatar" src="team-members/images/pannakron.jpg" alt="pannakron kongsawat">
-        <div>
-          <h3>Pannakron Kongsawat</h3>
-          <p>Vilgax Family</p>
+        <div class="avatar-wrap">
+          <span class="ring" aria-hidden="true"></span>
+          <img class="avatar" loading="lazy" src="team-members/images/pannakron.jpg" alt="Pannakron Kongsawat">
         </div>
-        <a href="team-members/pannakron.html">Open</a>
+        <h3>Pannakron Kongsawat</h3>
+        <p>Vilgax Family</p>
+        <a class="open" href="team-members/pannakron.html" aria-label="Open Pannakron profile">Open</a>
       </article>
 
+      <!-- 4 -->
       <article class="card" data-name="tantikon chumjai">
-        <img class="avatar" src="team-members/images/tantikon.jpg" alt="tantikon chumjai">
-        <div>
-          <h3>Tantikon Chumjai</h3>
-          <p>Alien Hunter</p>
+        <div class="avatar-wrap">
+          <span class="ring" aria-hidden="true"></span>
+          <img class="avatar" loading="lazy" src="team-members/images/tantikon.jpg" alt="Tantikon Chumjai">
         </div>
-        <a href="team-members/tantikon.html">Open</a>
+        <h3>Tantikon Chumjai</h3>
+        <p>Alien Hunter</p>
+        <a class="open" href="team-members/tantikon.html" aria-label="Open Tantikon profile">Open</a>
       </article>
 
+      <!-- 5 -->
       <article class="card" data-name="phuttargue soontorn">
-        <img class="avatar" src="team-members/images/phuttargue.jpg" alt="phuttargue soontorn">
-        <div>
-          <h3>Phuttargue Soontorn</h3>
-          <p>My child is Haru Urara</p>
+        <div class="avatar-wrap">
+          <span class="ring" aria-hidden="true"></span>
+          <img class="avatar" loading="lazy" src="team-members/images/phuttargue.jpg" alt="Phuttargue Soontorn">
         </div>
-        <a href="team-members/phuttargue.html">Open</a>
+        <h3>Phuttargue Soontorn</h3>
+        <p>My child is Haru Urara</p>
+        <a class="open" href="team-members/phuttargue.html" aria-label="Open Phuttargue profile">Open</a>
       </article>
     </div>
   </section>
 
-  
+  <!-- Footer -->
   <footer>
-    © <span id="y"></span> Team B-8 Lungs · Built with chatGPT · Power by chatGPT · It's not a joke bro!
+    © <span id="y"></span> Team B-8 Lungs · Crafted with care
   </footer>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
-    // Search functionality removed as requested
   </script>
 </body>
 </html>
