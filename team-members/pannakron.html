@@ -5,20 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pannakron Kongsawat — Profile</title>
   <style>
-    /* Reset */
     * {
       margin: 0; padding: 0; box-sizing: border-box;
     }
     body, html {
       height: 100%;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(180deg, #d8f3dc, #b7e4c7, #95d5b2);
+      background: linear-gradient(135deg, #4caf50, #81c784);
       overflow-x: hidden;
       color: #081c15;
       user-select: none;
+      position: relative;
     }
-
-    /* Parallax Background Circles */
     .bg-circle {
       position: fixed;
       border-radius: 50%;
@@ -28,14 +26,14 @@
       mix-blend-mode: multiply;
       transition: transform 0.1s ease-out;
       will-change: transform;
+      z-index: 0;
     }
     .bg-circle.c1 { width: 300px; height: 300px; top: 10vh; left: 15vw; }
     .bg-circle.c2 { width: 400px; height: 400px; top: 50vh; left: 70vw; }
     .bg-circle.c3 { width: 250px; height: 250px; top: 75vh; left: 30vw; }
 
-    /* Card */
     .card {
-      background: #ffffffee;
+      background: #f8fff9dd;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0, 100, 0, 0.25);
       max-width: 850px;
@@ -47,8 +45,6 @@
       margin: 40px auto;
       z-index: 10;
     }
-
-    /* Left panel */
     .left {
       background: linear-gradient(160deg, #2d6a4f, #40916c);
       display: flex;
@@ -79,8 +75,29 @@
       opacity: 0.9;
       font-weight: 600;
     }
-
-    /* Right panel */
+    .social-icons {
+      margin-top: 15px;
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+    .social-icons a {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      color: #1b4332;
+      transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: #52b788;
+    }
+    .social-icons img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 1px rgba(0,0,0,0.15));
+      user-select: none;
+    }
     .right {
       padding: 30px;
     }
@@ -118,8 +135,6 @@
       margin: 6px 0;
       line-height: 1.4;
     }
-
-    /* Buttons */
     .btn {
       display: inline-block;
       text-decoration: none;
@@ -139,24 +154,22 @@
       background: #1b4332;
       transform: translateY(-2px);
     }
-
     footer {
       text-align: center;
       margin-top: 20px;
-      color: #40916c;
+      color: #2a6a3e;
       font-size: 13px;
       z-index: 10;
       position: relative;
       user-select: none;
     }
-
-    /* Balls falling */
     .ball {
       position: fixed;
       pointer-events: none;
       z-index: 5;
       animation: moveBall linear forwards;
       user-select: none;
+      font-size: 28px;
     }
     @keyframes moveBall {
       0% {
@@ -175,51 +188,6 @@
         opacity: 0;
       }
     }
-
-    /* Social icons container */
-    .social-icons {
-      margin-top: 15px;
-      display: flex;
-      gap: 18px;
-      align-items: center;
-    }
-
-    /* Social icon style */
-    .social-icons a {
-      display: inline-block;
-      width: 32px;
-      height: 32px;
-      color: #1b4332;
-      transition: color 0.3s ease;
-    }
-    .social-icons a:hover {
-      color: #52b788;
-    }
-
-    /* Icon images */
-    .social-icons img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter: drop-shadow(0 0 1px rgba(0,0,0,0.15));
-      user-select: none;
-    }
-
-    /* Responsive */
-    @media(max-width: 720px) {
-      .card {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .left {
-        border-radius: 20px 20px 0 0;
-      }
-      .social-icons {
-        justify-content: center;
-      }
-    }
-
-    /* Music control button */
     #music-control {
       position: fixed;
       top: 15px;
@@ -240,18 +208,29 @@
     #music-control:hover {
       background: #1b4332;
     }
+    @media(max-width: 720px) {
+      .card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .left {
+        border-radius: 20px 20px 0 0;
+      }
+      .social-icons {
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Background circles for parallax -->
   <div class="bg-circle c1"></div>
   <div class="bg-circle c2"></div>
   <div class="bg-circle c3"></div>
 
-  <!-- Card -->
   <div class="card">
     <div class="left">
-      <img class="avatar" src="https://i.imgur.com/t5w9efJ.jpg" alt="pannakron kongsawat" />
+      <img class="avatar" alt="pannakron kongsawat" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAADwCAMAAAAp3OxYAAAAb1BMVEX///8AAABUVFTh4eE5OTkxMTFUVERFRUWdnZ2mpqaWlpbFxcWvr6/8/Px1dXUoKCizs7OLi4t7e3t8fHxycnIeHh5gYGBfX1/6+vplZWXn5+fo6OiqqqpXV1doaGg/Pz85OTmIiIjr6+vDw8N5eXllZWU2NjZ2dnZ0dHRTU1Oe0PLNAAABR0lEQVR4nO3cCVaDMBiAYRtZYaqxikLo//+/6uGBqOuVi+HnkbMBkfPL7BMOtmq4Bz+bAYAAAAAAAAAAAAAAAAAAAAAOqC4NMQ30am7ce7zIyb28bFy4hHSeO6GdtJHa00bXlPhDDcNZd4Omz/hUGMTJ2iTjXP3p7kk/WkeQ2Snd2TaN6zmh2Jb8ryJp5l6W3JeT2LcrvK8iem+X5mPZHgY6tzkLm2z37ZJlQco5RbWbD8jkTl/McXyqJv9g4dzvP5A8mkTxmY/jDz52Aujr8VY8yx06eHUHZbX2y3P6zqelqU/H4PtcKd7C5Xo9pz5uqcxlLs89WPAX2XIHtYmG9vYLPJ69/BSXNdLl9CezbWHoYayP6zYl3dvUlJaWNrZTlRuWJYVtu+oU5RtXbgvu3nlfK8zWnqOaXc29FrnNUt5Wju99vgz4/w2Y9XLufzP0FZ3JhmOfJnyu5tUnfr9NQ6f3k9fL1x5kH0+3r5oL4rWpfs7WkVAAAAAElFTkSuQmCC" />
+
       <h2>Pannakron Kongsawat</h2>
       <p>สมาชิกทีม B-8 Lungs</p>
 
@@ -294,13 +273,11 @@
 
   <footer>© 2025 Team B-8 • Green Theme</footer>
 
-  <!-- Background Music -->
   <audio id="bg-music" loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/02/26/audio_92ec578e06.mp3?filename=relaxing-acoustic-guitar-ambient-6276.mp3" type="audio/mpeg" />
     เบราว์เซอร์ของคุณไม่รองรับการเล่นเพลง
   </audio>
 
-  <!-- Music control button -->
   <button id="music-control" aria-label="เปิด/ปิดเพลง" title="เปิด/ปิดเพลง">▶️</button>
 
   <script>
@@ -320,7 +297,7 @@
       const ball = document.createElement("div");
       ball.textContent = "⚽";
       ball.classList.add("ball");
-      ball.style.fontSize = (30 + Math.random() * 40) + "px";
+      ball.style.fontSize = (28 + Math.random() * 30) + "px";
       ball.style.left = Math.random() * 100 + "vw";
       const duration = 6 + Math.random() * 5;
       ball.style.animationDuration = duration + "s";
@@ -355,7 +332,6 @@
       updateButton();
     });
 
-    // Auto play muted then unmute on user interaction (some browsers block auto play with sound)
     window.addEventListener("load", () => {
       music.volume = 0.4;
       music.play().then(() => {
