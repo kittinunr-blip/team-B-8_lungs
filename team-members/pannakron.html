@@ -14,7 +14,7 @@
       align-items: center;
       min-height: 100vh;
       color: #081c15;
-      overflow: hidden; /* กัน scrollbar */
+      overflow: hidden;
     }
 
     .card {
@@ -27,7 +27,7 @@
       grid-template-columns: 260px 1fr;
       overflow: hidden;
       position: relative;
-      z-index: 2; /* ให้อยู่เหนือ emoji */
+      z-index: 2;
     }
 
     .left {
@@ -88,6 +88,7 @@
       border-radius: 10px;
       transition: 0.3s;
       margin: 10px 10px 0 0;
+      cursor: pointer;
     }
     .btn:hover { background: #1b4332; transform: translateY(-2px); }
 
@@ -125,12 +126,12 @@
   </style>
 </head>
 <body>
-<div class="left">
-  <img class="avatar" src="images/pannakron.jpg" alt="pannakron kongsawat">
-  <h2>Pannakron Kongsawat</h2>
-  <p>สมาชิกทีม B-8 Lungs</p>
-</div>
-
+  <div class="card">
+    <div class="left">
+      <img class="avatar" src="images/pannakron.jpg" alt="pannakron kongsawat">
+      <h2>Pannakron Kongsawat</h2>
+      <p>สมาชิกทีม B-8 Lungs</p>
+    </div>
 
     <div class="right">
       <h3>เกี่ยวกับฉัน</h3>
@@ -158,35 +159,40 @@
 
   <footer>© 2025 Team B-8 • Green Theme</footer>
 
+  <!-- 🎵 auto-play -->
+  <audio id="bg-music" autoplay loop muted>
+    <source src="music/neymar.mp3" type="audio/mpeg">
+    เบราว์เซอร์ของคุณไม่รองรับการเล่นเพลง
+  </audio>
+
   <script>
+    // ⚽ ฟังก์ชันลูกบอล
     function createBall() {
       const ball = document.createElement('div');
       ball.textContent = '⚽';
       ball.classList.add('ball');
-
-      // ขนาดสุ่ม
       ball.style.fontSize = (30 + Math.random() * 40) + 'px';
-
-      // ตำแหน่ง X สุ่ม
       ball.style.left = Math.random() * 100 + 'vw';
-
-      // ความเร็วสุ่ม
       const duration = 6 + Math.random() * 5;
       ball.style.animationDuration = duration + 's';
-
       document.body.appendChild(ball);
-
-      // ลบเมื่อจบแอนิเมชัน
       ball.addEventListener('animationend', () => {
         ball.remove();
-        createBall(); // สร้างใหม่เรื่อย ๆ
+        createBall();
       });
     }
-
-    // เริ่มด้วย 12 ลูก
     for (let i = 0; i < 12; i++) {
       setTimeout(createBall, i * 1000);
     }
+
+    // 🎵 ปลด mute หลังโหลด
+    window.addEventListener('load', () => {
+      const music = document.getElementById('bg-music');
+      music.muted = false; // ปลด mute เพื่อให้มีเสียง
+      music.play().catch(() => {
+        console.log("ผู้ใช้ต้องคลิกเพื่อเปิดเสียง");
+      });
+    });
   </script>
 </body>
 </html>
