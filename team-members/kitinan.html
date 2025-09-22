@@ -1,126 +1,266 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Profile Page Template" />
-  <title>โปรไฟล์ — ตัวอย่าง</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>โปรไฟล์ส่วนตัว</title>
+  <!-- ฟอนต์สวยอ่านง่าย -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* ปรับธีมสีได้ตรงนี้ */
+      --bg: #0b1020;
+      --bg-accent: #111735;
+      --text: #e9eef7;
+      --muted: #a8b3cf;
+      --brand: #7d7bff;
+      --brand-2:#5cc8ff;
+      --card: rgba(255,255,255,0.06);
+      --glass: rgba(255,255,255,0.08);
+      --ring: 0 0 0 8px rgba(124, 207, 255, 0.2);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, segoue ui, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(124,207,255,0.18), transparent 60%),
+        radial-gradient(900px 500px at -10% 20%, rgba(125,123,255,0.16), transparent 60%),
+        linear-gradient(180deg, #0c1226, #0b1020);
+      overflow-x:hidden;
+    }
+    .container{max-width:1040px;margin:0 auto;padding:24px}
+    header{
+      display:flex;align-items:center;gap:18px;justify-content:space-between;
+      padding:16px 0 28px;
+    }
+    .logo{
+      display:flex;align-items:center;gap:12px;
+      font-weight:800;font-size:20px;letter-spacing:.2px;
+    }
+    .logo-badge{
+      width:34px;height:34px;border-radius:10px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: var(--shadow);
+    }
+    .pill{
+      padding:8px 14px;border-radius:999px;font-size:12.5px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));
+      border:1px solid rgba(255,255,255,0.12);
+      color:var(--muted)
+    }
+    .hero{
+      display:grid;grid-template-columns: 1fr;gap:22px;align-items:center;
+    }
+    @media (min-width:860px){
+      .hero{grid-template-columns: 1.1fr .9fr}
+    }
+    .title{font-size:clamp(28px, 5vw, 44px);line-height:1.1;font-weight:800}
+    .subtitle{color:var(--muted);margin-top:8px;font-size:15.5px}
+    .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.14);
+      background: linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
+      color:var(--text);text-decoration:none;font-weight:600;
+      box-shadow: var(--shadow);transition: transform .15s ease;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn.primary{
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      border:none;
+    }
+
+    .grid{display:grid;gap:18px;margin-top:26px}
+    @media (min-width:860px){
+      .grid{grid-template-columns: .9fr 1.1fr}
+    }
+
+    /* การ์ดโปรไฟล์ */
+    .card{
+      background: var(--card);
+      border:1px solid rgba(255,255,255,0.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .card-head{
+      padding:18px 18px 0;
+      display:flex;align-items:flex-end;gap:16px;
+    }
+    .avatar-wrap{
+      position:relative;display:inline-block;
+      border-radius:16px;overflow:hidden;
+      box-shadow: var(--shadow);
+    }
+    .avatar{
+      width:110px;height:110px;object-fit:cover;display:block;
+      background:#1b2244;
+    }
+    .avatar-ring{position:absolute;inset:-3px;border-radius:16px;
+      border:3px solid rgba(255,255,255,0.18);
+    }
+    .name{
+      font-size:22px;font-weight:800;margin:0 0 6px 0;
+    }
+    .meta{color:var(--muted);font-size:13.5px}
+    .card-body{padding:18px}
+    .list{display:grid;gap:10px;margin:12px 0 0}
+    .row{display:flex;gap:10px;align-items:flex-start}
+    .key{
+      min-width:110px;color:var(--muted);font-weight:600;font-size:13.5px
+    }
+    .val{flex:1}
+
+    /* การ์ดลิงก์/ข้อมูลเพิ่มเติม */
+    .links{display:grid;gap:14px;padding:18px}
+    .link-item{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:14px;border-radius:14px;
+      background: var(--glass);
+      border:1px solid rgba(255,255,255,0.10);
+      text-decoration:none;color:var(--text);
+    }
+    .link-item:hover{box-shadow: var(--ring)}
+    .link-left{display:flex;align-items:center;gap:12px}
+    .dot{width:10px;height:10px;border-radius:50%;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: 0 0 0 4px rgba(124,207,255,0.15)
+    }
+
+    footer{
+      opacity:.8;color:var(--muted);text-align:center;font-size:12.5px;
+      margin:28px 0 10px
+    }
+
+    /* ฟอร์มแก้ไข (ตัวอย่าง) */
+    .edit{
+      margin-top:18px;padding:16px;border-radius:14px;
+      background: rgba(255,255,255,0.05);
+      border:1px dashed rgba(255,255,255,0.12);
+    }
+    .edit h3{margin:0 0 10px;font-size:14px;opacity:.9}
+    .edit .f{display:grid;gap:10px}
+    .edit input, .edit textarea{
+      width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.25);color:var(--text)
+    }
+    .edit small{color:var(--muted)}
+  </style>
 </head>
-<body class="antialiased text-slate-800 bg-white dark:bg-slate-900 dark:text-slate-100">
-  <!-- Header -->
-  <header class="border-b border-slate-200 dark:border-slate-800">
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-      <span class="text-lg font-bold">MyProfile</span>
-      <button id="themeToggle" class="px-3 py-1.5 rounded-md border text-sm">Toggle theme</button>
-    </div>
-  </header>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <span class="logo-badge" aria-hidden="true"></span>
+        <span>My Profile</span>
+      </div>
+      <span class="pill">ปรับแต่งธีมได้ใน :root (สี/โทน)</span>
+    </header>
 
-  <!-- Profile Section -->
-  <main>
-    <section class="py-12">
-      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-        <img src="https://via.placeholder.com/150" alt="Profile" class="w-32 h-32 rounded-full mx-auto border shadow" />
-        <h1 class="mt-4 text-3xl font-extrabold">Kitinan Kanthakat</h1>
-        <p class="mt-2 text-slate-600 dark:text-slate-300">ตำแหน่ง / อาชีพ</p>
-        <p class="mt-4 max-w-xl mx-auto text-slate-600 dark:text-slate-300">แนะนำตัวสั้น ๆ เกี่ยวกับคุณ ความสนใจ ประสบการณ์ หรือสิ่งที่คุณกำลังทำอยู่</p>
-
-        <!-- Social Links -->
-        <div class="mt-6 flex justify-center gap-4">
-          <a href="#" class="text-blue-600 hover:underline">Facebook</a>
-          <a href="#" class="text-sky-500 hover:underline">Twitter</a>
-          <a href="#" class="text-gray-800 hover:underline">GitHub</a>
-          <a href="#" class="text-blue-700 hover:underline">LinkedIn</a>
+    <!-- ส่วน Hero แนะนำสั้นๆ -->
+    <section class="hero">
+      <div>
+        <h1 class="title">สวัสดีครับ/ค่ะ 👋<br>ผม/ฉันคือ <span style="background: linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent;">Kittinun Rattanasuphannawet</span></h1>
+        <p class="subtitle">นักศึกษาที่ชอบออกแบบเว็บไซต์ เล่นกับวงจร/PLC และทดลองไอเดียใหม่ ๆ</p>
+        <div class="cta">
+          <a class="btn primary" href="mailto:kittinun.r@gmail.com">ติดต่อผ่านอีเมล</a>
+          <a class="btn" href="#links">ดูลิงก์/โซเชียล</a>
         </div>
       </div>
-    </section>
-
-    <!-- Skills -->
-    <section class="py-12 bg-slate-50 dark:bg-slate-800">
-      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-center">ทักษะ</h2>
-        <p class="mt-2 text-center text-slate-600 dark:text-slate-300">รวมทักษะหลักและความสามารถที่ถนัด</p>
-        <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-center">
-          <div class="p-4 border rounded-lg">HTML</div>
-          <div class="p-4 border rounded-lg">CSS</div>
-          <div class="p-4 border rounded-lg">JavaScript</div>
-          <div class="p-4 border rounded-lg">React</div>
-          <div class="p-4 border rounded-lg">Node.js</div>
-          <div class="p-4 border rounded-lg">Python</div>
-          <div class="p-4 border rounded-lg">UI/UX</div>
-          <div class="p-4 border rounded-lg">อื่น ๆ</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Portfolio / Projects -->
-    <section class="py-12">
-      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-center">ผลงาน</h2>
-        <p class="mt-2 text-center text-slate-600 dark:text-slate-300">ตัวอย่างโครงการหรือผลงานที่เคยทำ</p>
-        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="p-4 border rounded-lg bg-white dark:bg-slate-900">
-            <img src="https://via.placeholder.com/400x200" alt="Project" class="rounded mb-3" />
-            <h3 class="font-semibold">โครงการ A</h3>
-            <p class="text-sm text-slate-600">รายละเอียดสั้น ๆ ของโครงการ เช่น วัตถุประสงค์ เทคโนโลยีที่ใช้ และผลลัพธ์ที่ได้</p>
+      <!-- การ์ดโปรไฟล์ -->
+      <article class="card">
+        <div class="card-head">
+          <div class="avatar-wrap">
+            <!-- ใส่รูปโปรไฟล์ของคุณแทน profile.jpg -->
+            <img class="avatar" src="profile.jpg" alt="รูปโปรไฟล์">
+            <span class="avatar-ring" aria-hidden="true"></span>
           </div>
-          <div class="p-4 border rounded-lg bg-white dark:bg-slate-900">
-            <img src="https://via.placeholder.com/400x200" alt="Project" class="rounded mb-3" />
-            <h3 class="font-semibold">โครงการ B</h3>
-            <p class="text-sm text-slate-600">รายละเอียดสั้น ๆ ของโครงการ เช่น สิ่งที่เรียนรู้หรือสิ่งที่พัฒนาขึ้นจากการทำงาน</p>
+          <div>
+            <h2 class="name">Kittinun Rattanasuphannawet</h2>
+            <div class="meta">Mechatronics • Web • Music & Books</div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="py-12 bg-slate-50 dark:bg-slate-800">
-      <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-center">ติดต่อ</h2>
-        <p class="mt-2 text-center text-slate-600 dark:text-slate-300">หากสนใจร่วมงานหรือพูดคุย สามารถส่งข้อความหาได้เลย</p>
-        <form class="mt-6 grid grid-cols-1 gap-4">
-          <input type="text" placeholder="ชื่อ" class="w-full p-3 border rounded" />
-          <input type="email" placeholder="อีเมล" class="w-full p-3 border rounded" />
-          <textarea placeholder="ข้อความ" rows="4" class="w-full p-3 border rounded"></textarea>
-          <div class="text-right">
-            <button type="submit" class="px-5 py-3 bg-indigo-600 text-white rounded">ส่งข้อความ</button>
+        <div class="card-body">
+          <div class="list">
+            <div class="row">
+              <div class="key">Hobby</div>
+              <div class="val">อ่านหนังสือ, ฟังเพลง</div>
+            </div>
+            <div class="row">
+              <div class="key">Favorite Game</div>
+              <div class="val">Honkai: Star Rail</div>
+            </div>
+            <div class="row">
+              <div class="key">Facebook</div>
+              <div class="val"><a href="https://facebook.com/" target="_blank" style="color:var(--brand-2);text-decoration:none;">น้องแฟนต้ากิตตินันท์</a></div>
+            </div>
+            <div class="row">
+              <div class="key">Email</div>
+              <div class="val"><a href="mailto:kittinun.r@gmail.com" style="color:var(--brand-2);text-decoration:none;">kittinun.r@gmail.com</a></div>
+            </div>
           </div>
-        </form>
-      </div>
-    </section>
-  </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-200 dark:border-slate-800">
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-6 text-sm text-center text-slate-600 dark:text-slate-400">
-      © <span id="year"></span> MyProfile
-    </div>
-  </footer>
+          <!-- ฟอร์มแก้ไขอย่างเร็ว (ไม่ต้องมี JS ก็ใช้คัดลอกไปแก้ค่า) -->
+          <div class="edit">
+            <h3>แก้ไขข้อมูล (ตัวอย่าง)</h3>
+            <div class="f">
+              <input type="text" placeholder="ชื่อ-นามสกุล">
+              <input type="text" placeholder="Hobby เช่น อ่านหนังสือ, ฟังเพลง">
+              <input type="text" placeholder="เกมโปรด เช่น Honkai: Star Rail">
+              <input type="url" placeholder="ลิงก์ Facebook">
+              <input type="email" placeholder="อีเมล">
+              <small>หมายเหตุ: ตัวนี้เป็นเพียงฟอร์มตัวอย่าง หากต้องการให้กดแล้วอัปเดตจริง ๆ ต้องเขียน JavaScript เพิ่ม</small>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- การ์ดลิงก์/ผลงาน/ช่องทางติดต่อเพิ่มเติม -->
+    <section id="links" class="grid">
+      <article class="card">
+        <div class="links">
+          <a class="link-item" href="https://github.com/" target="_blank" rel="noreferrer">
+            <span class="link-left"><span class="dot"></span><strong>GitHub</strong></span>
+            <span>เปิดดูผลงาน</span>
+          </a>
+          <a class="link-item" href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+            <span class="link-left"><span class="dot"></span><strong>Instagram</strong></span>
+            <span>@your.ig</span>
+          </a>
+          <a class="link-item" href="mailto:kittinun.r@gmail.com">
+            <span class="link-left"><span class="dot"></span><strong>Email</strong></span>
+            <span>ติดต่อทันที</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- การ์ด “เกี่ยวกับฉัน” เพิ่มเติม -->
+      <article class="card" style="padding:18px;">
+        <h3 style="margin:0 0 8px;">เกี่ยวกับฉัน</h3>
+        <p style="color:var(--muted);margin:0">
+          สนใจ Mechatronics, LabVIEW, PLC (GX Works2), และการออกแบบเว็บสายมินิมอล
+          ชอบทดลองโปรเจกต์เล็ก ๆ และแชร์ความรู้ให้เพื่อน ๆ ในทีม B-8 Lungs
+        </p>
+      </article>
+    </section>
+
+    <footer>
+      © <span id="y">2025</span> โปรไฟล์โดยคุณ
+    </footer>
+  </div>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const themeToggle = document.getElementById('themeToggle');
-    function setTheme(dark) {
-      if (dark) document.documentElement.classList.add('dark');
-      else document.documentElement.classList.remove('dark');
-      localStorage.setItem('site-theme', dark ? 'dark' : 'light');
-    }
-    const saved = localStorage.getItem('site-theme');
-    if (saved) setTheme(saved === 'dark');
-    else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) setTheme(true);
-
-    themeToggle && themeToggle.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('site-theme', isDark ? 'dark' : 'light');
-    });
-
-    document.querySelector('form')?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('ขอบคุณสำหรับข้อความ! (ตัวอย่าง)');
-      e.target.reset();
-    });
+    // อัปเดตปีอัตโนมัติเล็ก ๆ น้อย ๆ
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
+
