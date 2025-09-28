@@ -1,160 +1,199 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>โปรไฟล์ — Kitinan Kanthakat</title>
-  <meta name="description" content="เทมเพลตหน้าโปรไฟล์ส่วนตัว (HTML + CSS + JS)" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kitinan Kanthkat</title>
+  <meta name="description" content="Simple, single-file About Me template with clearly editable lines" />
   <style>
     :root{
-      --bg:#f4f9f4; --card:#ffffff; --muted:#4d5d53; --accent:#2d6a4f; --glass: rgba(255,255,255,0.6);
+      --bg:#0b0c0e; --card:#13151a; --muted:#a0a4ab; --text:#e8e9ec; --accent:#6ee7b7; --accent-2:#60a5fa;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
     }
-    [data-theme="dark"]{ --bg:#1b2620; --card:#243832; --muted:#a8bfae; --accent:#95d5b2; --glass: rgba(255,255,255,0.05); }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial; background:linear-gradient(180deg,var(--bg),#e9f5e9); color:var(--muted);}
-    .container{max-width:1000px;margin:36px auto;padding:20px;}
-    .profile-grid{display:grid;grid-template-columns:280px 1fr;gap:20px;align-items:start}
-    .card{background:var(--card);border-radius:14px;padding:20px;box-shadow:0 6px 20px rgba(2,6,23,0.06);}
-
-    /* Sidebar */
-    .avatar{width:120px;height:120px;border-radius:999px;overflow:hidden;border:6px solid var(--glass);display:block;margin:0 auto 12px;}
-    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
-    h1{margin:6px 0 0;font-size:20px;color:var(--accent)}
-    h2{margin:8px 0 0;font-size:14px;color:var(--muted)}
-    .meta{font-size:13px;margin-top:10px;text-align:center;color:var(--muted)}
-    .socials{display:flex;gap:10px;justify-content:center;margin-top:12px}
-    .socials a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;background:linear-gradient(180deg,var(--glass),transparent);text-decoration:none;color:var(--accent)}
-
-    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
-    .btn.secondary{background:transparent;color:var(--accent);border:1px solid rgba(45,106,79,0.2)}
-
-    /* Main */
-    .section{margin-bottom:18px}
-    .bio{font-size:15px;color:#1b4332;line-height:1.55}
-    .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
-    .skill{flex:1 1 130px;background:linear-gradient(180deg,var(--glass),transparent);padding:10px;border-radius:10px}
-    .skill .label{font-size:13px;color:var(--muted);margin-bottom:8px}
-    .progress{height:8px;background:rgba(15,23,36,0.06);border-radius:8px;overflow:hidden}
-    .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#52b788)}
-
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
-    .project{height:110px;border-radius:10px;background:linear-gradient(180deg,#d8f3dc,#fff);display:flex;align-items:end;padding:10px;font-weight:700;color:#1b4332}
-
-    .contact form{display:grid;gap:8px}
-    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(15,23,36,0.06);font-size:14px}
-    textarea{min-height:100px}
-
-    /* small screens */
-    @media (max-width:880px){
-      .profile-grid{grid-template-columns:1fr;}
-      .avatar{margin:0 auto 10px}
+    html,body{height:100%}
+    body{margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans Thai", "Noto Sans", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background:radial-gradient(1200px 600px at 10% -10%, #1b1d23 10%, transparent 60%), radial-gradient(1200px 600px at 110% 10%, #121319 10%, transparent 60%), var(--bg); color:var(--text);}
+    .wrap{max-width:1000px; margin:40px auto; padding:24px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)), var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
+    header{display:grid; grid-template-columns:120px 1fr; gap:20px; padding:28px}
+    .avatar{width:120px; height:120px; border-radius:24px; object-fit:cover; border:2px solid rgba(255,255,255,.12)}
+    h1{margin:4px 0 6px; font-size:28px; letter-spacing:.3px}
+    .subtitle{color:var(--muted); font-size:14px}
+    .badges{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+    .badge{border:1px solid rgba(255,255,255,.12); padding:6px 10px; font-size:12px; border-radius:999px; background:rgba(255,255,255,.04)}
+    .content{display:grid; grid-template-columns:1.1fr .9fr; gap:22px; padding:0 28px 28px}
+    .panel{background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:18px}
+    h2{font-size:16px; margin:0 0 12px; letter-spacing:.2px}
+    p{margin:0 0 10px; line-height:1.7}
+    ul{margin:0; padding-left:18px}
+    a{color:var(--accent-2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    .kv{display:flex; gap:8px; align-items:flex-start}
+    .k{width:92px; color:var(--muted); font-size:13px}
+    .v{font-size:14px}
+    footer{padding:18px 28px 28px; color:var(--muted); font-size:12px}
+    .chip{display:inline-block; padding:6px 10px; border:1px solid rgba(255,255,255,.12); border-radius:999px; margin:4px 6px 0 0; font-size:12px}
+    .cta{display:inline-flex; align-items:center; gap:8px; background:linear-gradient(90deg, var(--accent), var(--accent-2)); color:#0b0c0e; border:none; padding:12px 16px; border-radius:12px; font-weight:700; cursor:pointer}
+    .cta:hover{filter:brightness(1.05)}
+    @media (max-width:780px){
+      header{grid-template-columns:80px 1fr}
+      .avatar{width:80px; height:80px; border-radius:14px}
+      .content{grid-template-columns:1fr}
     }
+    /* Helper highlight for editors */
+    ._editable_hint{background:rgba(96,165,250,.08); border:1px dashed rgba(96,165,250,.5); padding:10px 12px; border-radius:12px; font-size:12px; color:var(--muted); margin:0 28px 18px}
+    code{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Noto Sans Mono", monospace; font-size:12px}
   </style>
 </head>
-<body data-theme="light">
-  <div class="container">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-      <div>
-        <strong style="font-size:18px;color:var(--accent)">หน้าโปรไฟล์</strong>
-        <div style="font-size:13px;color:var(--muted)">โทนธรรมชาติ — HTML Template</div>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <!--
+        =====================
+        CONFIG — แก้ไขเฉพาะค่าด้านล่างนี้ แล้วบันทึกไฟล์เป็น about-me.html
+        =====================
+      -->
+      <script id="CONFIG">
+        // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+        const PROFILE = {
+          // ข้อมูลหลัก (แก้ไขได้)
+          name: "Kitinan Kanthakat",        // ← แก้ไขบรรทัดนี้
+          title: "นักศึกษาวิศวกรรมเมคคาทรอนิกส์", // ← แก้ไขบรรทัดนี้
+          location: "กรุงเทพฯ, ไทย",          // ← แก้ไขบรรทัดนี้
+          avatar: "team-members/images/kitinan.jpg", // ← URL รูปโปรไฟล์ (แก้ไขได้)
+          bio: "สวัสดีครับ/ค่ะ ฉันชอบสร้างสิ่งประดิษฐ์, เขียนโค้ด และทดลองควบคุมระบบอัตโนมัติแบบสนุก ๆ.", // ← แก้ไขบรรทัดนี้
+
+          // ช่องทางติดต่อ (แก้ไขได้)
+          email: "you@example.com",     // ← แก้ไขบรรทัดนี้
+          phone: "+66 8x-xxx-xxxx",    // ← แก้ไขบรรทัดนี้ (ถ้าไม่ใช้ ให้เว้นว่าง "")
+          website: "https://your.site", // ← แก้ไขบรรทัดนี้
+          social: [                      // ← เพิ่ม/ลบได้ตามต้องการ
+            {label: "GitHub", url: "https://github.com/yourname"},
+            {label: "LinkedIn", url: "https://linkedin.com/in/yourname"},
+            {label: "Facebook", url: "https://facebook.com/yourname"}
+          ],
+
+          // ทักษะ/สกิล (แก้ไขได้)
+          skills: ["LabVIEW", "MATLAB", "GX Works2", "HTML/CSS", "Control Systems"], // ← แก้ไขบรรทัดนี้
+
+          // ความสนใจ (แก้ไขได้)
+          interests: ["Mechatronics", "Robotics", "Bode Plot", "UI Design"], // ← แก้ไขบรรทัดนี้
+
+          // โปรเจ็กต์เด่น (แก้ไขได้)
+          projects: [
+            { name: "Team B-8 Lungs Website", desc: "เว็บทีมสไตล์มินิมอล ใช้ Git + DevContainer", link: "#" },
+            { name: "Chiller PID Control", desc: "ออกแบบตัวควบคุมอุณหภูมิและจูนพารามิเตอร์", link: "#" }
+          ],
+
+          // สีธีม (แก้ค่านี้เพื่อเปลี่ยน mood ได้อย่างรวดเร็ว)
+          theme: {
+            accent: "#6ee7b7",   // เขียวมิ้นท์
+            accent2:"#60a5fa"    // ฟ้าพาสเทล
+          }
+        };
+        // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ แก้ไขเฉพาะส่วน CONFIG นี้ ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+      </script>
+
+      <div class="_editable_hint">
+        <strong>แก้ไขได้ที่ส่วน <code>CONFIG</code> ด้านบน</strong> — เปลี่ยนค่า <code>name, title, bio, email, social, skills, interests, projects</code> แล้วบันทึกไฟล์เป็น <code>about-me.html</code>
       </div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <button id="themeToggle" class="btn secondary">สลับธีม</button>
-        <a class="btn" href="#">ดาวน์โหลด Resume</a>
+
+      <header>
+        <img class="avatar" id="avatar" alt="avatar" />
+        <div>
+          <h1 id="name"></h1>
+          <div class="subtitle" id="title"></div>
+          <div class="badges" id="badges"></div>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="panel">
+          <h2>เกี่ยวกับฉัน</h2>
+          <p id="bio"></p>
+          <div class="grid-2" style="margin-top:10px">
+            <div class="kv"><div class="k">ที่อยู่</div><div class="v" id="location"></div></div>
+            <div class="kv"><div class="k">อีเมล</div><div class="v"><a id="email"></a></div></div>
+            <div class="kv"><div class="k">โทร</div><div class="v" id="phone"></div></div>
+            <div class="kv"><div class="k">เว็บไซต์</div><div class="v"><a id="website" target="_blank" rel="noopener"></a></div></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>สกิล</h2>
+          <div id="skills"></div>
+          <h2 style="margin-top:16px">ความสนใจ</h2>
+          <div id="interests"></div>
+          <h2 style="margin-top:16px">โซเชียล</h2>
+          <div id="social"></div>
+        </section>
       </div>
+
+      <section class="panel" style="margin:0 28px 12px">
+        <h2>โปรเจ็กต์เด่น</h2>
+        <div id="projects"></div>
+        <div style="margin-top:14px"><button class="cta" onclick="window.scrollTo({top:0, behavior:'smooth'})">⬆ กลับขึ้นด้านบน</button></div>
+      </section>
+
+      <footer>
+        เทมเพลทนี้เป็นไฟล์เดียว แก้ไขง่าย เหมาะสำหรับอัปขึ้น GitHub Pages หรือโฮสติ้งใด ๆ
+      </footer>
     </div>
-
-    <div class="profile-grid">
-      <!-- Sidebar -->
-      <aside class="card">
-        <div class="avatar">
-          <img src="https://via.placeholder.com/480x480.png?text=Avatar" alt="Avatar" />
-        </div>
-        <h1>Kitinan Kanthakat</h1>
-        <h2>ตำแหน่ง — นักพัฒนาเว็บ / นักออกแบบ</h2>
-        <div class="meta">อาศัยอยู่ กรุงเทพมหานคร · ทำงานเป็นฟรีแลนซ์ · เปิดรับงาน</div>
-
-        <div class="socials" aria-hidden>
-          <a href="#" title="GitHub" aria-label="GitHub">G</a>
-          <a href="#" title="LinkedIn" aria-label="LinkedIn">in</a>
-          <a href="#" title="Twitter" aria-label="Twitter">T</a>
-        </div>
-
-        <div style="margin-top:16px;text-align:center">
-          <a class="btn" href="#">ติดต่อ</a>
-        </div>
-      </aside>
-
-      <!-- Main content -->
-      <main>
-        <section class="card section">
-          <div class="bio">
-            <h3 style="color:#2d6a4f;margin-top:0">แนะนำตัว</h3>
-            <p style="color:#1b4332;margin:0 0 8px;font-weight:600">สวัสดีครับ ผมชื่อ ชื่อ ของคุณ — ชอบทำเว็บไซต์ ชอบออกแบบอะไรที่ดูสบายตา ใช้งานง่าย และเหมาะกับทุกคน</p>
-            <p>ผมเคยทำงานทั้งในบริษัทและรับงานฟรีแลนซ์ สนุกกับการเขียน HTML, CSS, JavaScript รวมถึงเล่นกับเฟรมเวิร์กใหม่ ๆ อยู่เสมอ อีกอย่างที่ชอบคือการออกแบบ UI/UX ให้เว็บดูเป็นมิตรและใช้ง่าย</p>
-            <p>ช่วงนี้กำลังโฟกัสการทำงานที่เชื่อมโยงกับธรรมชาติ และอยากสร้างผลงานที่ทั้งเท่และยั่งยืน ใครสนใจร่วมงานหรืออยากแลกเปลี่ยนประสบการณ์ ก็ติดต่อมาได้เลยนะครับ 🙌</p>
-          </div>
-          <div style="margin-top:14px">
-            <strong style="font-size:14px;color:var(--muted)">ทักษะ</strong>
-            <div class="skills">
-              <div class="skill">
-                <div class="label">HTML &amp; CSS</div>
-                <div class="progress" aria-hidden><i style="width:95%"></i></div>
-              </div>
-              <div class="skill">
-                <div class="label">JavaScript</div>
-                <div class="progress" aria-hidden><i style="width:85%"></i></div>
-              </div>
-              <div class="skill">
-                <div class="label">React / Vue</div>
-                <div class="progress" aria-hidden><i style="width:76%"></i></div>
-              </div>
-              <div class="skill">
-                <div class="label">UI / UX</div>
-                <div class="progress" aria-hidden><i style="width:82%"></i></div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="card section">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-            <strong style="font-size:15px;color:var(--muted)">โปรเจกต์ / พอร์ตโฟลิโอ</strong>
-            <a href="#" style="font-size:13px;color:var(--accent);text-decoration:none">ดูทั้งหมด</a>
-          </div>
-          <div class="projects-grid">
-            <div class="project">Project A</div>
-            <div class="project">Project B</div>
-            <div class="project">Project C</div>
-            <div class="project">Project D</div>
-          </div>
-        </section>
-
-        <section class="card section contact">
-          <strong style="font-size:15px;color:var(--muted);display:block;margin-bottom:10px">ส่งข้อความ</strong>
-          <form onsubmit="event.preventDefault();alert('ฟอร์มจำลอง — เชื่อมต่อกับ backend เพื่อใช้งานจริง');">
-            <input type="text" placeholder="ชื่อ" required />
-            <input type="email" placeholder="อีเมล" required />
-            <textarea placeholder="ข้อความ"></textarea>
-            <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
-              <button type="reset" class="btn secondary">ล้าง</button>
-              <button type="submit" class="btn">ส่ง</button>
-            </div>
-          </form>
-        </section>
-      </main>
-    </div>
-
-    <footer style="margin-top:20px;text-align:center;color:var(--muted);font-size:13px">© <span id="year"></span> ชื่อของคุณ — สร้างด้วย 🌿</footer>
   </div>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const btn = document.getElementById('themeToggle');
-    btn.addEventListener('click', ()=>{
-      const cur = document.body.getAttribute('data-theme');
-      const next = cur === 'dark' ? 'light' : 'dark';
-      document.body.setAttribute('data-theme', next);
+    // Apply theme from CONFIG
+    if (PROFILE?.theme){
+      const r = document.documentElement;
+      if (PROFILE.theme.accent)   r.style.setProperty('--accent', PROFILE.theme.accent);
+      if (PROFILE.theme.accent2)  r.style.setProperty('--accent-2', PROFILE.theme.accent2);
+    }
+
+    // Fill basics
+    const $ = (id)=>document.getElementById(id);
+    $("name").textContent = PROFILE.name;
+    $("title").textContent = PROFILE.title;
+    $("bio").textContent = PROFILE.bio;
+    $("location").textContent = PROFILE.location;
+    const email = PROFILE.email || "";
+    const phone = PROFILE.phone || "";
+    const website = PROFILE.website || "";
+
+    // Avatar
+    const av = $("avatar");
+    av.src = PROFILE.avatar || "https://picsum.photos/300";
+
+    // Badges (quick highlights under name)
+    const badges = [PROFILE.location, website && new URL(website).hostname].filter(Boolean);
+    badges.forEach(b=>{
+      const s=document.createElement('span'); s.className='badge'; s.textContent=b; $("badges").appendChild(s);
+    });
+
+    // Contacts
+    if(email){ const a=$("email"); a.href = `mailto:${email}`; a.textContent = email; }
+    if(phone){ $("phone").textContent = phone; } else { $("phone").parentElement.parentElement.style.display='none'; }
+    if(website){ const a=$("website"); a.href = website; a.textContent = website; }
+
+    // Skills & interests
+    function chips(containerId, arr){
+      const el=$(containerId); (arr||[]).forEach(x=>{ const c=document.createElement('span'); c.className='chip'; c.textContent=x; el.appendChild(c); });
+    }
+    chips('skills', PROFILE.skills);
+    chips('interests', PROFILE.interests);
+
+    // Social
+    (PROFILE.social||[]).forEach(s=>{
+      const p=document.createElement('p'); const a=document.createElement('a'); a.href=s.url; a.target='_blank'; a.rel='noopener'; a.textContent=s.label; p.appendChild(a); $("social").appendChild(p);
+    });
+
+    // Projects
+    (PROFILE.projects||[]).forEach(pr=>{
+      const wrap=document.createElement('div'); wrap.style.marginBottom='10px';
+      const a=document.createElement('a'); a.href=pr.link||'#'; a.target='_blank'; a.rel='noopener'; a.style.fontWeight='700'; a.textContent=pr.name;
+      const d=document.createElement('div'); d.style.color='var(--muted)'; d.style.fontSize='13px'; d.textContent=pr.desc||'';
+      wrap.appendChild(a); wrap.appendChild(d); $("projects").appendChild(wrap);
     });
   </script>
 </body>
