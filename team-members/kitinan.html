@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kitinan Kanthkat</title>
-  <meta name="description" content="Simple, single-file About Me template with clearly editable lines" />
+  <title>Kitinan Kanthakat</title>
+  <meta name="description" content="Kitinan Kanthakat" />
   <style>
     :root{
       --bg:#0b0c0e; --card:#13151a; --muted:#a0a4ab; --text:#e8e9ec; --accent:#6ee7b7; --accent-2:#60a5fa;
@@ -42,63 +42,34 @@
       .avatar{width:80px; height:80px; border-radius:14px}
       .content{grid-template-columns:1fr}
     }
-    /* Helper highlight for editors */
-    ._editable_hint{background:rgba(96,165,250,.08); border:1px dashed rgba(96,165,250,.5); padding:10px 12px; border-radius:12px; font-size:12px; color:var(--muted); margin:0 28px 18px}
     code{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Noto Sans Mono", monospace; font-size:12px}
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="card">
-      <!--
-        =====================
-        CONFIG — แก้ไขเฉพาะค่าด้านล่างนี้ แล้วบันทึกไฟล์เป็น about-me.html
-        =====================
-      -->
+      <!-- CONFIG: แก้ไขค่าต่าง ๆ ใน object นี้เพื่ออัปเดตหน้า -->
       <script id="CONFIG">
-        // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
         const PROFILE = {
-          // ข้อมูลหลัก (แก้ไขได้)
-          name: "Kitinan Kanthakat",        // ← แก้ไขบรรทัดนี้
-          title: "นักศึกษาวิศวกรรมเมคคาทรอนิกส์", // ← แก้ไขบรรทัดนี้
-          location: "เชียงใหม่, ไทย",          // ← แก้ไขบรรทัดนี้
-          avatar: "team-members/images/kittinun.jpg", // ← URL รูปโปรไฟล์ (แก้ไขได้)
-          bio: "สวัสดีครับ/ค่ะ ฉันชอบสร้างสิ่งประดิษฐ์, เขียนโค้ด และทดลองควบคุมระบบอัตโนมัติแบบสนุก ๆ.", // ← แก้ไขบรรทัดนี้
-
-          // ช่องทางติดต่อ (แก้ไขได้)
-          email: "you@example.com",     // ← แก้ไขบรรทัดนี้
-          phone: "+66 8x-xxx-xxxx",    // ← แก้ไขบรรทัดนี้ (ถ้าไม่ใช้ ให้เว้นว่าง "")
-          website: "https://your.site", // ← แก้ไขบรรทัดนี้
-          social: [                      // ← เพิ่ม/ลบได้ตามต้องการ
+          name: "Kitinan Kanthakat",
+          title: "นักศึกษาวิศวกรรมเมคคาทรอนิกส์",
+          location: "เชียงใหม่, ไทย",
+          avatar: "team-members/images/kitinan.jpg",
+          bio: "สวัสดีครับ/ค่ะ ฉันชอบสร้างสิ่งประดิษฐ์, เขียนโค้ด และทดลองควบคุมระบบอัตโนมัติแบบสนุก ๆ.",
+          email: "you@example.com",
+          phone: "+66 8x-xxx-xxxx",
+          website: "https://your.site",
+          social: [
             {label: "GitHub", url: "https://github.com/yourname"},
             {label: "LinkedIn", url: "https://linkedin.com/in/yourname"},
             {label: "Facebook", url: "https://facebook.com/yourname"}
           ],
-
-          // ทักษะ/สกิล (แก้ไขได้)
-          skills: ["LabVIEW", "MATLAB", "GX Works2", "HTML/CSS", "Control Systems"], // ← แก้ไขบรรทัดนี้
-
-          // ความสนใจ (แก้ไขได้)
-          interests: ["Mechatronics", "Robotics", "Bode Plot", "UI Design"], // ← แก้ไขบรรทัดนี้
-
-          // โปรเจ็กต์เด่น (แก้ไขได้)
-          projects: [
-            { name: "Team B-8 Lungs Website", desc: "เว็บทีมสไตล์มินิมอล ใช้ Git + DevContainer", link: "#" },
-            { name: "Chiller PID Control", desc: "ออกแบบตัวควบคุมอุณหภูมิและจูนพารามิเตอร์", link: "#" }
-          ],
-
-          // สีธีม (แก้ค่านี้เพื่อเปลี่ยน mood ได้อย่างรวดเร็ว)
-          theme: {
-            accent: "#6ee7b7",   // เขียวมิ้นท์
-            accent2:"#60a5fa"    // ฟ้าพาสเทล
-          }
+          skills: ["LabVIEW", "MATLAB", "GX Works2", "CAD"],
+          interests: ["Mechatronics", "Robotics", "UI Design"],
+          projects: [],
+          theme: { accent: "#6ee7b7", accent2: "#60a5fa" }
         };
-        // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ แก้ไขเฉพาะส่วน CONFIG นี้ ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
       </script>
-
-      <div class="_editable_hint">
-        <strong>แก้ไขได้ที่ส่วน <code>CONFIG</code> ด้านบน</strong> — เปลี่ยนค่า <code>name, title, bio, email, social, skills, interests, projects</code> แล้วบันทึกไฟล์เป็น <code>about-me.html</code>
-      </div>
 
       <header>
         <img class="avatar" id="avatar" alt="avatar" />
@@ -131,12 +102,6 @@
         </section>
       </div>
 
-      <section class="panel" style="margin:0 28px 12px">
-        <h2>โปรเจ็กต์เด่น</h2>
-        <div id="projects"></div>
-        <div style="margin-top:14px"><button class="cta" onclick="window.scrollTo({top:0, behavior:'smooth'})">⬆ กลับขึ้นด้านบน</button></div>
-      </section>
-
       <footer>
         เทมเพลทนี้เป็นไฟล์เดียว แก้ไขง่าย เหมาะสำหรับอัปขึ้น GitHub Pages หรือโฮสติ้งใด ๆ
       </footer>
@@ -144,14 +109,12 @@
   </div>
 
   <script>
-    // Apply theme from CONFIG
     if (PROFILE?.theme){
       const r = document.documentElement;
       if (PROFILE.theme.accent)   r.style.setProperty('--accent', PROFILE.theme.accent);
       if (PROFILE.theme.accent2)  r.style.setProperty('--accent-2', PROFILE.theme.accent2);
     }
 
-    // Fill basics
     const $ = (id)=>document.getElementById(id);
     $("name").textContent = PROFILE.name;
     $("title").textContent = PROFILE.title;
@@ -161,39 +124,26 @@
     const phone = PROFILE.phone || "";
     const website = PROFILE.website || "";
 
-    // Avatar
     const av = $("avatar");
     av.src = PROFILE.avatar || "https://picsum.photos/300";
 
-    // Badges (quick highlights under name)
     const badges = [PROFILE.location, website && new URL(website).hostname].filter(Boolean);
     badges.forEach(b=>{
       const s=document.createElement('span'); s.className='badge'; s.textContent=b; $("badges").appendChild(s);
     });
 
-    // Contacts
     if(email){ const a=$("email"); a.href = `mailto:${email}`; a.textContent = email; }
     if(phone){ $("phone").textContent = phone; } else { $("phone").parentElement.parentElement.style.display='none'; }
     if(website){ const a=$("website"); a.href = website; a.textContent = website; }
 
-    // Skills & interests
     function chips(containerId, arr){
       const el=$(containerId); (arr||[]).forEach(x=>{ const c=document.createElement('span'); c.className='chip'; c.textContent=x; el.appendChild(c); });
     }
     chips('skills', PROFILE.skills);
     chips('interests', PROFILE.interests);
 
-    // Social
     (PROFILE.social||[]).forEach(s=>{
       const p=document.createElement('p'); const a=document.createElement('a'); a.href=s.url; a.target='_blank'; a.rel='noopener'; a.textContent=s.label; p.appendChild(a); $("social").appendChild(p);
-    });
-
-    // Projects
-    (PROFILE.projects||[]).forEach(pr=>{
-      const wrap=document.createElement('div'); wrap.style.marginBottom='10px';
-      const a=document.createElement('a'); a.href=pr.link||'#'; a.target='_blank'; a.rel='noopener'; a.style.fontWeight='700'; a.textContent=pr.name;
-      const d=document.createElement('div'); d.style.color='var(--muted)'; d.style.fontSize='13px'; d.textContent=pr.desc||'';
-      wrap.appendChild(a); wrap.appendChild(d); $("projects").appendChild(wrap);
     });
   </script>
 </body>
